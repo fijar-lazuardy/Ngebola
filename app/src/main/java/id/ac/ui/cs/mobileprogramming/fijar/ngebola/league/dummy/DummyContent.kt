@@ -1,4 +1,4 @@
-package id.ac.ui.cs.mobileprogramming.fijar.ngebola.league.dummy
+ package id.ac.ui.cs.mobileprogramming.fijar.ngebola.league.dummy
 
 import java.util.ArrayList
 import java.util.HashMap
