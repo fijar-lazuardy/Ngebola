@@ -6,4 +6,6 @@
     <string name="title_profile">Profil</string>
     <string name="name_label">Nama</string>
     <string name="curr_lang">Bahasa</string>
+    <string name="name_input_placeholder">Masukkan nama</string>
+    <string name="next">Lanjut</string>
 </resources>

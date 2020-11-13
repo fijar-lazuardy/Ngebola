@@ -4,8 +4,10 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.UserRepository
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.user.User
+import kotlinx.coroutines.launch
 import java.util.*
 
 class ProfileViewModel(application: Application) : AndroidViewModel(application) {
@@ -15,11 +17,13 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
 
     fun getUser() {
 //        repository.getUserByName()
-        userScreen.value = repository.getUserByName()
+        viewModelScope.launch {
+            userScreen.value = repository.getUserByNameBg()
+        }
     }
 
     fun insertUser(name: String) {
-        val user = User(id=1, name = name)
+        val user = User(name = name)
         repository.insertUser(user)
     }
 

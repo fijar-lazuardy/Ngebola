@@ -23,7 +23,13 @@ class UserRepository(application: Application) : CoroutineScope {
         userDao = db?.UserDao()
     }
 
-    fun getUserByName() = userDao?.getUser()
+    suspend fun getUserByNameBg(): User? {
+        var user: User?
+        withContext(Dispatchers.IO) {
+            user = userDao?.getUser()
+        }
+        return user
+    }
 
     fun insertUser(user: User) {
         launch {

@@ -27,8 +27,8 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.profile_fragment, container, false)
-        profileViewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
+        val view = inflater.inflate(R.layout.profile_fragment, container, false)
+        profileViewModel = ViewModelProvider(requireActivity())[ProfileViewModel::class.java]
         val languageUsed = view?.findViewById<TextView>(R.id.preferred_lang)
 
         val card = view?.findViewById<Button>(R.id.button)
@@ -53,7 +53,7 @@ class ProfileFragment : Fragment() {
 
 
         languageUsed?.text = Locale.getDefault().displayName.toString()
-        return root
+        return view
     }
 
 
