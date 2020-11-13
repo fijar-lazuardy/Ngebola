@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="id.ac.ui.cs.mobileprogramming.fijar.ngebola.fragments.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/home_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_league"
+        android:name="id.ac.ui.cs.mobileprogramming.fijar.ngebola.fragments.league.LeagueFragment"
+        android:label="@string/title_league"
+        tools:layout="@layout/league_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_team"
+        android:name="id.ac.ui.cs.mobileprogramming.fijar.ngebola.fragments.team.TeamFragment"
+        android:label="@string/title_team"
+        tools:layout="@layout/team_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="id.ac.ui.cs.mobileprogramming.fijar.ngebola.fragments.profile.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/profile_fragment" />
+</navigation>
