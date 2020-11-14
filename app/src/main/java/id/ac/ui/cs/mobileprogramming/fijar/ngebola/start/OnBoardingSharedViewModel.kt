@@ -1,16 +1,17 @@
 package id.ac.ui.cs.mobileprogramming.fijar.ngebola.start
 
 import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.UserRepository
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.user.User
 
-class OnBoardingSharedViewModel : ViewModel() {
+class OnBoardingSharedViewModel(application: Application) : AndroidViewModel(application) {
     private lateinit var user: User
-    val userRepository = UserRepository(Application())
+    private val userRepository = UserRepository(application)
 
-    fun inputUser(name: String) {
+    fun inputUserInfo(name: String) {
         user = User(name = name)
         userRepository.insertUser(user)
     }

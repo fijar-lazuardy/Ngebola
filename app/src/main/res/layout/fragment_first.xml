@@ -10,22 +10,155 @@
         android:id="@+id/name_input_placeholder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/name_input_placeholder"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/next_button"
+        android:hint="@string/name_input_placeholder"
+        android:importantForAutofill="no"
+        app:layout_constraintBottom_toTopOf="@+id/team_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.729" />
+        app:layout_constraintVertical_bias="0.37" />
+
+    <RadioGroup
+        android:id="@+id/team_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/league_button"
+        app:layout_constraintTop_toBottomOf="@id/name_input_placeholder"
+        >
+        <RadioButton
+            android:id="@+id/liverpool_button"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="match_parent"
+            android:paddingStart="@dimen/_16sdp"
+            android:paddingEnd="@dimen/_16sdp"
+            android:paddingTop="@dimen/_3sdp"
+            android:paddingBottom="@dimen/_3sdp"
+            android:gravity="center"
+            android:checked="true"
+            android:button="@android:color/transparent"
+            android:background="@drawable/radio_flat_selector"
+            android:text="@string/liverpool_team"
+            android:textColor="@color/radio_flat_text_selector"/>
+        <RadioButton
+            android:id="@+id/real_madrid_button"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="match_parent"
+            android:paddingStart="@dimen/_16sdp"
+            android:paddingEnd="@dimen/_16sdp"
+            android:paddingTop="@dimen/_3sdp"
+            android:paddingBottom="@dimen/_3sdp"
+            android:gravity="center"
+            android:checked="false"
+            android:button="@android:color/transparent"
+            android:background="@drawable/radio_flat_selector"
+            android:text="@string/real_madrid_team"
+            android:textColor="@color/radio_flat_text_selector" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/league_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/team_button"
+        app:layout_constraintBottom_toTopOf="@id/player_button"
+        >
+        <RadioButton
+            android:id="@+id/epl_button"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="match_parent"
+            android:paddingStart="@dimen/_16sdp"
+            android:paddingEnd="@dimen/_16sdp"
+            android:paddingTop="@dimen/_3sdp"
+            android:paddingBottom="@dimen/_3sdp"
+            android:gravity="center"
+            android:checked="true"
+            android:button="@android:color/transparent"
+            android:background="@drawable/radio_flat_selector"
+            android:text="@string/epl_league"
+            android:textColor="@color/radio_flat_text_selector"/>
+        <RadioButton
+            android:id="@+id/la_liga_button"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="match_parent"
+            android:paddingStart="@dimen/_16sdp"
+            android:paddingEnd="@dimen/_16sdp"
+            android:paddingTop="@dimen/_3sdp"
+            android:paddingBottom="@dimen/_3sdp"
+            android:gravity="center"
+            android:checked="false"
+            android:button="@android:color/transparent"
+            android:background="@drawable/radio_flat_selector"
+            android:text="@string/la_liga_league"
+            android:textColor="@color/radio_flat_text_selector" />
+
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/player_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/league_button"
+        app:layout_constraintBottom_toTopOf="@id/next_button"
+        >
+        <RadioButton
+            android:id="@+id/salah_button"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="match_parent"
+            android:paddingStart="@dimen/_16sdp"
+            android:paddingEnd="@dimen/_16sdp"
+            android:paddingTop="@dimen/_3sdp"
+            android:paddingBottom="@dimen/_3sdp"
+            android:gravity="center"
+            android:checked="true"
+            android:button="@android:color/transparent"
+            android:background="@drawable/radio_flat_selector"
+            android:text="@string/salah_player"
+            android:textColor="@color/radio_flat_text_selector"/>
+        <RadioButton
+            android:id="@+id/son_button"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="match_parent"
+            android:paddingStart="@dimen/_16sdp"
+            android:paddingEnd="@dimen/_16sdp"
+            android:paddingTop="@dimen/_3sdp"
+            android:paddingBottom="@dimen/_3sdp"
+            android:gravity="center"
+            android:checked="false"
+            android:button="@android:color/transparent"
+            android:background="@drawable/radio_flat_selector"
+            android:text="@string/son_player"
+            android:textColor="@color/radio_flat_text_selector" />
+    </RadioGroup>
 
     <Button
         android:id="@+id/next_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="168dp"
+        android:layout_marginBottom="32dp"
         android:text="@string/next"
+        android:enabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/player_button"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 

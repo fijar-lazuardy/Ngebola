@@ -1,9 +1,6 @@
 package id.ac.ui.cs.mobileprogramming.fijar.ngebola.db
 
 import android.app.Application
-import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.league.LeagueDao
-import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.player.PlayerDao
-import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.team.TeamDao
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.user.User
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.user.UserDao
 import kotlinx.coroutines.CoroutineScope
@@ -30,6 +27,13 @@ class UserRepository(application: Application) : CoroutineScope {
         }
         return user
     }
+
+//    fun getAllUserBg(): List<User>? {
+//        withContext(Dispatchers.IO) {
+//            return userDao?.getAllUser()
+//
+//        }
+//    }
 
     fun insertUser(user: User) {
         launch {

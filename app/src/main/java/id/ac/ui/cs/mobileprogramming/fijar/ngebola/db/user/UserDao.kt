@@ -11,8 +11,11 @@ interface UserDao {
     @Query("SELECT * FROM users WHERE name=:name")
     fun getUserByName(name: String): User
 
-    @Query("SELECT * FROM users WHERE id=1")
+    @Query("SELECT * FROM users WHERE name='kontol'")
     fun getUser(): User
+
+    @Query("SELECT * FROM users")
+    fun getAllUser(): List<User>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertUser(user: User)

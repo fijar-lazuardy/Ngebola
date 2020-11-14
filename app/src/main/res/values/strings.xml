@@ -9,7 +9,12 @@
     <string name="name_label">Name</string>
     <string name="curr_lang">Language</string>
     <string name="name_input_placeholder">Input your name</string>
-    <string name="title_activity_onboarding">OnboardingActivity</string>
+    <string name="liverpool_team" translatable="false">Liverpool</string>
+    <string name="real_madrid_team" translatable="false">Real Madrid</string>
+    <string name="epl_league" translatable="false">Premier League</string>
+    <string name="la_liga_league" translatable="false">La Liga</string>
+    <string name="salah_player" translatable="false">M. Salah</string>
+    <string name="son_player" translatable="false">Son Heung Min</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
