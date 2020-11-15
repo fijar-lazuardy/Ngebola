@@ -1,8 +1,10 @@
 package id.ac.ui.cs.mobileprogramming.fijar.ngebola.db
 
 import android.app.Application
+import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.league.League
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.user.User
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.user.UserDao
+import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.user.UserOnlyDao
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -13,39 +15,48 @@ class UserRepository(application: Application) : CoroutineScope {
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main
 
+    private var userOnlyDao: UserOnlyDao?
     private var userDao: UserDao?
 
     init {
         val db = NgebolaDb.getDatabase(application)
-        userDao = db?.UserDao()
+        userOnlyDao = db?.userOnlyDao()
+        userDao = db?.userDao()
     }
 
     suspend fun getUserByNameBg(): User? {
         var user: User?
         withContext(Dispatchers.IO) {
-            user = userDao?.getUser()
+            user = userOnlyDao?.getUser()
         }
         return user
     }
 
-//    fun getAllUserBg(): List<User>? {
-//        withContext(Dispatchers.IO) {
-//            return userDao?.getAllUser()
-//
-//        }
-//    }
-
     fun insertUser(user: User) {
-        launch {
-            insertUserBg(user)
-        }
+//        launch {
+//            insertUserBg(user)
+//        }
+        userOnlyDao?.insertUser(user)
     }
 
     private suspend fun insertUserBg(user: User) {
         withContext(Dispatchers.IO) {
-            userDao?.insertUser(user)
+            userOnlyDao?.insertUser(user)
         }
     }
+
+//    fun insertUser(user: User, league: League) {
+////        launch {
+////        insertUserBg(user, league)
+////        }
+//        userDao?.insertUserWithLeague(user, league)
+//    }
+//
+//    private suspend fun insertUserBg(user: User, league: League) {
+//        withContext(Dispatchers.IO) {
+//            userDao?.insertUserWithLeague(user, league)
+//        }
+//    }
 
 
 }

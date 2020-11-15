@@ -1,0 +1,83 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/standing_rank"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/_4sdp"
+
+    app:cardBackgroundColor="@color/mina_color">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/_5sdp"
+        android:paddingBottom="@dimen/_5sdp">
+
+        <TextView
+            android:id="@+id/standing_pos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:width="@dimen/_20sdp"
+            android:text="@string/rank_placeholder"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/team_name"
+            android:layout_width="@dimen/_120sdp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/standing_pos"
+            android:text="@string/team_name_standing"
+            android:textAlignment="center"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/win_holder"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/team_name"
+            android:text="@string/win_placeholder"
+            android:textAlignment="center"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/draw_holder"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/win_holder"
+            android:text="@string/draw_placeholder"
+            android:textAlignment="center"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/lose_holder"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/draw_holder"
+            android:text="@string/lose_placeholder"
+            android:textAlignment="center"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/gf_holder"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/lose_holder"
+            android:text="@string/gf_placeholder"
+            android:textAlignment="center"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/ga_holder"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/gf_holder"
+            android:text="@string/ga_placeholder"
+            android:textAlignment="center"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/gd_holder"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/ga_holder"
+            android:text="@string/gd_placeholder"
+            android:textAlignment="center"
+            android:textStyle="bold"/>
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

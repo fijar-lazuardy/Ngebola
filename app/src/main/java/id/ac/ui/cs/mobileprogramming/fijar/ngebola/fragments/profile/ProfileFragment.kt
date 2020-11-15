@@ -28,16 +28,16 @@ class ProfileFragment : Fragment() {
         val userName: TextView = view.findViewById(R.id.user_name)
         val languageUsed: TextView = view.findViewById(R.id.preferred_lang)
 
-        profileViewModel = ViewModelProvider(requireActivity())[ProfileViewModel::class.java]
+        profileViewModel = ViewModelProvider(this)[ProfileViewModel::class.java]
         profileViewModel.getUser()
         profileViewModel.getLanguage()
 
         profileViewModel.userScreen.observe(viewLifecycleOwner, Observer<User> {
-            userName?.text = it?.name
+            userName.text = it?.name
         })
 
         profileViewModel.languageName.observe(viewLifecycleOwner, Observer {
-            languageUsed?.text = it
+            languageUsed.text = it
         })
 
         return view

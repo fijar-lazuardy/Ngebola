@@ -7,16 +7,16 @@ import androidx.room.RoomDatabase
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.league.League
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.league.LeagueDao
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.player.Player
-import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.player.PlayerDao
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.team.Team
-import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.team.TeamDao
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.user.User
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.user.UserDao
+import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.user.UserOnlyDao
 
 @Database(entities = [User::class, League::class, Player::class, Team::class], version = 1, exportSchema = false)
 abstract class NgebolaDb : RoomDatabase() {
-    abstract fun UserDao(): UserDao
-//    abstract fun LeagueDao(): LeagueDao
+    abstract fun userOnlyDao(): UserOnlyDao
+    abstract fun LeagueDao(): LeagueDao
+    abstract fun userDao(): UserDao
 //    abstract fun PlayerDao(): PlayerDao
 //    abstract fun TeamDao(): TeamDao
 

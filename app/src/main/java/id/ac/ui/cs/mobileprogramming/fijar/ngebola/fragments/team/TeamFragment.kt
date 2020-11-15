@@ -9,23 +9,20 @@ import android.view.ViewGroup
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.R
 
 class TeamFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = TeamFragment()
-    }
-
-    private lateinit var viewModel: TeamViewModel
+    private lateinit var teamViewModel: TeamViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.team_fragment, container, false)
+        val view = inflater.inflate(R.layout.team_fragment, container, false)
+        teamViewModel = ViewModelProvider(this)[TeamViewModel::class.java]
+
+        return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(TeamViewModel::class.java)
         // TODO: Use the ViewModel
     }
 

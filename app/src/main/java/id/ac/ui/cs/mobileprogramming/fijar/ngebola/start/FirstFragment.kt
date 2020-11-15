@@ -9,11 +9,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.RadioGroup
-import android.widget.Toast
+import android.widget.*
 import androidx.core.widget.addTextChangedListener
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.MainActivity
@@ -39,6 +37,7 @@ class FirstFragment : Fragment() {
         val rgTeam: RadioGroup = view.findViewById(R.id.team_button)
         val rgLeague: RadioGroup = view.findViewById(R.id.league_button)
         val rgPlayer: RadioGroup = view.findViewById(R.id.player_button)
+        val progressBar: ProgressBar = view.findViewById(R.id.progressBar)
 
         rgTeam.setOnCheckedChangeListener { _, checkedId ->
             teamId = if (checkedId.toString() == "liverpool_button") {
@@ -72,12 +71,19 @@ class FirstFragment : Fragment() {
         }
         inputName.addTextChangedListener(textWatcher)
         button.setOnClickListener {
+            progressBar.visibility = View.VISIBLE
             sharedPrefManager = UserSharedPreferenceManager(requireContext())
             sharedPrefManager.setFirstTime(false)
-            viewModel.inputUserInfo(inputName.text.toString().trim())
-            val intent = Intent(activity, MainActivity::class.java)
-            startActivity(intent)
-            activity?.finish()
+//            viewModel.inputUserInfo(inputName.text.toString().trim())
+            viewModel.insertUserInfo(inputName.text.toString().trim(), leagueId)
+            viewModel.isDoneLoading.observe(viewLifecycleOwner, Observer {
+                if (it == true) {
+                    progressBar.visibility = View.GONE
+                    val intent = Intent(activity, MainActivity::class.java)
+                    startActivity(intent)
+                    activity?.finish()
+                }
+            })
         }
         return view
     }

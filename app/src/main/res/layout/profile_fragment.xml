@@ -14,7 +14,7 @@
             android:id="@+id/name_card"
             android:layout_width="350dp"
             android:layout_height="47dp"
-            app:cardBackgroundColor="@color/gray"
+            app:cardBackgroundColor="@color/mina_color"
             app:cardCornerRadius="20dp"
             app:cardElevation="0dp"
             android:layout_marginTop="150dp"
@@ -29,7 +29,7 @@
 
                 <TextView
                     android:id="@+id/name_placeholder"
-                    android:layout_width="62dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
@@ -39,7 +39,7 @@
 
                 <TextView
                     android:id="@+id/user_name"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
@@ -51,7 +51,7 @@
             android:id="@+id/lang_card"
             android:layout_width="350dp"
             android:layout_height="47dp"
-            app:cardBackgroundColor="@color/gray"
+            app:cardBackgroundColor="@color/mina_color"
             app:cardCornerRadius="20dp"
             app:cardElevation="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -67,7 +67,7 @@
 
                 <TextView
                     android:id="@+id/lang_placeholder"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
@@ -77,7 +77,7 @@
 
                 <TextView
                     android:id="@+id/preferred_lang"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="" />

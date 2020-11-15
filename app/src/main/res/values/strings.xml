@@ -16,7 +16,17 @@
     <string name="salah_player" translatable="false">M. Salah</string>
     <string name="son_player" translatable="false">Son Heung Min</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
+    <string name="league_name_descriptor">League Name</string>
+    <string name="league_country_descriptor">Country</string>
+    <string name="league_season_descriptor">League Name</string>
+    <string name="rank_placeholder" translatable="false">Pos</string>
+    <string name="team_name_standing">Team</string>
+    <string name="win_placeholder" translatable="false">W</string>
+    <string name="draw_placeholder" translatable="false">D</string>
+    <string name="lose_placeholder" translatable="false">L</string>
+    <string name="gf_placeholder" translatable="false">GF</string>
+    <string name="ga_placeholder" translatable="false">GA</string>
+    <string name="gd_placeholder" translatable="false">GD</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>

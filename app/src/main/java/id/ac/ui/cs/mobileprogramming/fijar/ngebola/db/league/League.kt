@@ -5,9 +5,8 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class League (
-    @PrimaryKey var league_id: String,
-    val name: String,
-    val country: String,
-    val season: Int,
-    val logo: String
+    @PrimaryKey var league_id: Int?,
+    val name: String?,
+    val country: String?,
+    val season: Int?
 )

@@ -12,8 +12,8 @@ interface LeagueDao {
     suspend fun getAllLeague(): List<League>
 
     @Query("SELECT * FROM league WHERE league_id=:league_id")
-    suspend fun getLeagueById(league_id: String): League
+    suspend fun getLeagueById(league_id: Int): League
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertLeague(league_id: String)
+    fun insertLeague(league: League)
 }

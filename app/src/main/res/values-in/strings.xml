@@ -8,4 +8,8 @@
     <string name="curr_lang">Bahasa</string>
     <string name="name_input_placeholder">Masukkan nama</string>
     <string name="next">Lanjut</string>
+    <string name="league_name_descriptor">Nama Liga</string>
+    <string name="league_country_descriptor">Negara</string>
+    <string name="league_season_descriptor">Musim</string>
+    <string name="team_name_standing">Tim</string>
 </resources>
