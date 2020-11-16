@@ -1,21 +1,15 @@
-package id.ac.ui.cs.mobileprogramming.fijar.ngebola.fragments.profile
+package id.ac.ui.cs.mobileprogramming.fijar.ngebola.ui.fragments.profile
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
-import androidx.cardview.widget.CardView
-import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.R
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.user.User
-import java.util.*
 
 class ProfileFragment : Fragment() {
     private lateinit var profileViewModel: ProfileViewModel

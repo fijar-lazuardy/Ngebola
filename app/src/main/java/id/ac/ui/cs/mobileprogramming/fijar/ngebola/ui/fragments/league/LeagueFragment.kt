@@ -1,22 +1,15 @@
-package id.ac.ui.cs.mobileprogramming.fijar.ngebola.fragments.league
+package id.ac.ui.cs.mobileprogramming.fijar.ngebola.ui.fragments.league
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.provider.Settings
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.R
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.league.League
-import id.ac.ui.cs.mobileprogramming.fijar.ngebola.model.Standing
-import id.ac.ui.cs.mobileprogramming.fijar.ngebola.retrofit.RetrofitClient
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 class LeagueFragment : Fragment() {
 

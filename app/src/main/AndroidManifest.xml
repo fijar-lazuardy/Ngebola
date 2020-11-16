@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ngebola">
         <activity
-            android:name=".start.OnboardingActivity"
+            android:name="id.ac.ui.cs.mobileprogramming.fijar.ngebola.ui.start.OnboardingActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.Ngebola.NoActionBar">
             <intent-filter>

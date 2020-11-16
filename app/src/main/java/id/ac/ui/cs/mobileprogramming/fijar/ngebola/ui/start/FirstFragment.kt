@@ -1,19 +1,16 @@
-package id.ac.ui.cs.mobileprogramming.fijar.ngebola.start
+package id.ac.ui.cs.mobileprogramming.fijar.ngebola.ui.start
 
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
-import android.text.TextUtils
 import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.MainActivity
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.R
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.shared_preferences.UserSharedPreferenceManager

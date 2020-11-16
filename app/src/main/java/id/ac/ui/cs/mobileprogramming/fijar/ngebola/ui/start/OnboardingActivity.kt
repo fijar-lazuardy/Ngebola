@@ -1,11 +1,8 @@
-package id.ac.ui.cs.mobileprogramming.fijar.ngebola.start
+package id.ac.ui.cs.mobileprogramming.fijar.ngebola.ui.start
 
 import android.content.Intent
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.add
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.MainActivity
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.R
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.shared_preferences.UserSharedPreferenceManager

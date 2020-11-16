@@ -1,7 +1,6 @@
-package id.ac.ui.cs.mobileprogramming.fijar.ngebola.fragments.league
+package id.ac.ui.cs.mobileprogramming.fijar.ngebola.ui.fragments.league
 
 import android.app.Application
-import android.provider.Settings
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
@@ -12,7 +11,6 @@ import id.ac.ui.cs.mobileprogramming.fijar.ngebola.retrofit.RetrofitClient
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import retrofit2.Response
 
 class LeagueViewModel(application: Application) : AndroidViewModel(application) {
     private val retrofit = RetrofitClient.RETROFIT_SERVICE

@@ -1,10 +1,9 @@
-package id.ac.ui.cs.mobileprogramming.fijar.ngebola.fragments.profile
+package id.ac.ui.cs.mobileprogramming.fijar.ngebola.ui.fragments.profile
 
 import android.app.Application
 import androidx.lifecycle.*
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.UserRepository
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.user.User
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.*
 

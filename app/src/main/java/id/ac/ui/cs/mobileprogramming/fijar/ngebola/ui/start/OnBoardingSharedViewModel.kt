@@ -1,4 +1,4 @@
-package id.ac.ui.cs.mobileprogramming.fijar.ngebola.start
+package id.ac.ui.cs.mobileprogramming.fijar.ngebola.ui.start
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
