@@ -1,7 +1,12 @@
 package id.ac.ui.cs.mobileprogramming.fijar.ngebola.ui.start
 
+import android.app.Activity.RESULT_OK
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.ImageDecoder
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
 import androidx.fragment.app.Fragment
@@ -14,10 +19,15 @@ import androidx.lifecycle.ViewModelProvider
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.MainActivity
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.R
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.shared_preferences.UserSharedPreferenceManager
+import java.lang.Exception
 
 class FirstFragment : Fragment() {
     private lateinit var viewModel: OnBoardingSharedViewModel
     private lateinit var sharedPrefManager: UserSharedPreferenceManager
+    private val GALLERY_REQUEST_CODE = 1
+    private lateinit var image: ImageView
+    private lateinit var imageUri: Uri
+    private lateinit var bitmap: Bitmap
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -36,6 +46,8 @@ class FirstFragment : Fragment() {
         val rgPlayer: RadioGroup = view.findViewById(R.id.player_button)
         val progressBar: ProgressBar = view.findViewById(R.id.progressBar)
         val loadingScreen: RelativeLayout = view.findViewById(R.id.loading_screen)
+        val uploadImageBtn: Button = view.findViewById(R.id.choose_picture)
+        image = view.findViewById(R.id.user_image)
 
         rgTeam.setOnCheckedChangeListener { _, checkedId ->
             teamId = if (checkedId.toString() == "liverpool_button") {
@@ -43,6 +55,9 @@ class FirstFragment : Fragment() {
             } else {
                 541
             }
+        }
+        uploadImageBtn.setOnClickListener {
+            uploadImage()
         }
 
         rgLeague.setOnCheckedChangeListener { _, checkedId ->
@@ -73,7 +88,7 @@ class FirstFragment : Fragment() {
             sharedPrefManager = UserSharedPreferenceManager(requireContext())
             sharedPrefManager.setFirstTime(false)
 //            viewModel.inputUserInfo(inputName.text.toString().trim())
-            viewModel.insertUserInfo(inputName.text.toString().trim(), leagueId)
+            viewModel.insertUserInfo(inputName.text.toString().trim(), leagueId, bitmap)
             viewModel.isDoneLoading.observe(viewLifecycleOwner, Observer {
                 if (it == true) {
                     loadingScreen.visibility = View.GONE
@@ -84,6 +99,33 @@ class FirstFragment : Fragment() {
             })
         }
         return view
+    }
+    fun uploadImage() {
+        var intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        val mimeTypes = arrayOf("image/jpeg", "image/png")
+        intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes)
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
+        startActivityForResult(intent, GALLERY_REQUEST_CODE)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            try {
+                Toast.makeText(activity, "masuk sini", Toast.LENGTH_SHORT).show()
+                imageUri = data?.data!!
+//                val photo: Bitmap = data?.extras?.get("data") as Bitmap
+//                val photo: Bitmap = MediaStore.Images.Media.bi
+                val source: ImageDecoder.Source = ImageDecoder.createSource(activity?.contentResolver!!, imageUri)
+                bitmap = ImageDecoder.decodeBitmap(source)
+                image.setImageBitmap(bitmap)
+                image.contentDescription = "User's profile picture"
+            }
+            catch (e: Exception) {
+
+            }
+        }
     }
 
 }

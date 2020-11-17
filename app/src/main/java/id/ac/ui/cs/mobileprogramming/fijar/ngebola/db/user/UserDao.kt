@@ -1,12 +1,13 @@
 package id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.user
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import androidx.room.*
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.league.League
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.player.Player
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.team.Team
+import java.io.ByteArrayOutputStream
+import java.util.*
 
 @Dao
 abstract class UserDao {
@@ -28,3 +29,16 @@ abstract class UserDao {
 //        user.team = team
 //    }
 }
+//class DataConverter {
+//    @TypeConverter
+//    fun convertToString(bitmap: Bitmap): ByteArray {
+//        val bos = ByteArrayOutputStream()
+//        bitmap.compress(Bitmap.CompressFormat.JPEG, 80, bos)
+//        return bos.toByteArray()
+//    }
+//
+//    fun convertToBitmap(imageString: String): Bitmap {
+//        val decodedBytes = Base64.getDecoder().decode(imageString)
+//        return BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.size)
+//    }
+//}

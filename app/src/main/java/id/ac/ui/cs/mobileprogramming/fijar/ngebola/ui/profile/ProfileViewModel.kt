@@ -1,6 +1,8 @@
 package id.ac.ui.cs.mobileprogramming.fijar.ngebola.ui.profile
 
 import android.app.Application
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import androidx.lifecycle.*
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.UserRepository
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.user.User
@@ -21,12 +23,17 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
         }
     }
 
-    fun insertUser(name: String) {
-        val user = User(name = name)
-        repository.insertUser(user)
-    }
+//    fun insertUser(name: String) {
+//        val user = User(name = name)
+//        repository.insertUser(user)
+//    }
 
     fun getLanguage() {
         languageName.value = Locale.getDefault().displayName.toString()
+    }
+
+    fun convertToBitmap(stringImage: String): Bitmap {
+        val decodedBytes = Base64.getDecoder().decode(stringImage)
+        return BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.size)
     }
 }

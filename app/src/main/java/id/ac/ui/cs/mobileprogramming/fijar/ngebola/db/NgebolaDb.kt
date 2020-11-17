@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.league.League
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.league.LeagueDao
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.player.Player

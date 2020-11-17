@@ -11,6 +11,10 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import id.ac.ui.cs.mobileprogramming.fijar.ngebola.notification.Actions
+import id.ac.ui.cs.mobileprogramming.fijar.ngebola.notification.NotificationService
+import id.ac.ui.cs.mobileprogramming.fijar.ngebola.notification.ServiceState
+import id.ac.ui.cs.mobileprogramming.fijar.ngebola.notification.getServiceState
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.receiver.HeadsetPlugReceiver
 
 class MainActivity : AppCompatActivity() {
@@ -19,7 +23,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
-
         val navController = findNavController(R.id.nav_host_fragment)
 
         val appBarConfiguration = AppBarConfiguration.Builder(
@@ -32,7 +35,12 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
     }
 
-    fun broadcastIntent() {
-
+    fun actionOnService(action: Actions) {
+        if (getServiceState(this) == ServiceState.STOPPED && action == Actions.STOP) return
+        Intent(this, NotificationService::class.java).also {
+            it.action = action.name
+            startForegroundService(it)
+            return
+        }
     }
 }
