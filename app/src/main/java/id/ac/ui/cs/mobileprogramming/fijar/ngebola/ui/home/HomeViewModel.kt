@@ -1,4 +1,4 @@
-package id.ac.ui.cs.mobileprogramming.fijar.ngebola.ui.fragments.home
+package id.ac.ui.cs.mobileprogramming.fijar.ngebola.ui.home
 
 import androidx.lifecycle.ViewModel
 

@@ -1,12 +1,17 @@
 package id.ac.ui.cs.mobileprogramming.fijar.ngebola
 
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import id.ac.ui.cs.mobileprogramming.fijar.ngebola.receiver.HeadsetPlugReceiver
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,8 +22,6 @@ class MainActivity : AppCompatActivity() {
 
         val navController = findNavController(R.id.nav_host_fragment)
 
-//        val appBarConfiguration = AppBarConfiguration(setOf(
-//            R.id.navigation_home, R.id.navigation_league, R.id.navigation_team, R.id.navigation_profile))
         val appBarConfiguration = AppBarConfiguration.Builder(
             R.id.navigation_home,
             R.id.navigation_league,
@@ -27,5 +30,9 @@ class MainActivity : AppCompatActivity() {
         ).build()
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+    }
+
+    fun broadcastIntent() {
+
     }
 }

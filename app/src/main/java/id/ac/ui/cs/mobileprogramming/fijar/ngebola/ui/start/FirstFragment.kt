@@ -35,6 +35,7 @@ class FirstFragment : Fragment() {
         val rgLeague: RadioGroup = view.findViewById(R.id.league_button)
         val rgPlayer: RadioGroup = view.findViewById(R.id.player_button)
         val progressBar: ProgressBar = view.findViewById(R.id.progressBar)
+        val loadingScreen: RelativeLayout = view.findViewById(R.id.loading_screen)
 
         rgTeam.setOnCheckedChangeListener { _, checkedId ->
             teamId = if (checkedId.toString() == "liverpool_button") {
@@ -68,14 +69,14 @@ class FirstFragment : Fragment() {
         }
         inputName.addTextChangedListener(textWatcher)
         button.setOnClickListener {
-            progressBar.visibility = View.VISIBLE
+            loadingScreen.visibility = View.VISIBLE
             sharedPrefManager = UserSharedPreferenceManager(requireContext())
             sharedPrefManager.setFirstTime(false)
 //            viewModel.inputUserInfo(inputName.text.toString().trim())
             viewModel.insertUserInfo(inputName.text.toString().trim(), leagueId)
             viewModel.isDoneLoading.observe(viewLifecycleOwner, Observer {
                 if (it == true) {
-                    progressBar.visibility = View.GONE
+                    loadingScreen.visibility = View.GONE
                     val intent = Intent(activity, MainActivity::class.java)
                     startActivity(intent)
                     activity?.finish()

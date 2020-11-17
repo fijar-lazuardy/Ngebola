@@ -1,4 +1,4 @@
-package id.ac.ui.cs.mobileprogramming.fijar.ngebola.ui.fragments.team
+package id.ac.ui.cs.mobileprogramming.fijar.ngebola.ui.home
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -8,17 +8,17 @@ import android.view.View
 import android.view.ViewGroup
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.R
 
-class TeamFragment : Fragment() {
-    private lateinit var teamViewModel: TeamViewModel
+class HomeFragment : Fragment() {
+
+    private lateinit var homeViewModel: HomeViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.team_fragment, container, false)
-        teamViewModel = ViewModelProvider(this)[TeamViewModel::class.java]
+        homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+        val root = inflater.inflate(R.layout.home_fragment, container, false)
 
-        return view
+        return root
     }
-
 }

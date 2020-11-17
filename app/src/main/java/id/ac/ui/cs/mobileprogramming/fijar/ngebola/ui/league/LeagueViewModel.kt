@@ -1,4 +1,4 @@
-package id.ac.ui.cs.mobileprogramming.fijar.ngebola.ui.fragments.league
+package id.ac.ui.cs.mobileprogramming.fijar.ngebola.ui.league
 
 import android.app.Application
 import android.util.Log
@@ -32,7 +32,7 @@ class LeagueViewModel(application: Application) : AndroidViewModel(application) 
     fun getStandingInfo(league_id: Int) {
         GlobalScope.launch(Dispatchers.Main) {
             try {
-                val standingResponse = retrofit.getStandingInfo(league_id).body()?.api?.standings?.get(0)?.take(3)
+                val standingResponse = retrofit.getStandingInfo(league_id).body()?.api?.standings?.get(0)?.take(5)
                 standingInfo.value = standingResponse
             }
             catch (e: Error) {

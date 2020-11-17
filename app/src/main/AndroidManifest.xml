@@ -3,6 +3,7 @@
     package="id.ac.ui.cs.mobileprogramming.fijar.ngebola">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -11,8 +12,32 @@
         android:roundIcon="@mipmap/ic_launcher_ball"
         android:supportsRtl="true"
         android:theme="@style/Theme.Ngebola">
+        <activity android:name=".notification.NotificationActivity"></activity>
+
+        <provider
+            android:name=".storageprovider.UserDocumentProvider"
+            android:authorities="id.ac.ui.cs.mobileprogramming.fijar.ngebola.storageprovider.documents"
+            android:exported="true"
+            android:grantUriPermissions="true"
+            android:permission="android.permission.MANAGE_DOCUMENTS">
+            <intent-filter>
+                <action android:name="android.content.action.DOCUMENTS_PROVIDER" />
+            </intent-filter>
+        </provider>
+
+        <receiver android:name=".receiver.HeadsetPlugReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.HEADSET_PLUG" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".receiver.NetworkReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
         <activity
-            android:name="id.ac.ui.cs.mobileprogramming.fijar.ngebola.ui.start.OnboardingActivity"
+            android:name=".ui.start.OnboardingActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.Ngebola.NoActionBar">
             <intent-filter>
@@ -21,12 +46,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" android:label="@string/app_name">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.DEFAULT" />
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+                <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             </intent-filter>
         </activity>
     </application>

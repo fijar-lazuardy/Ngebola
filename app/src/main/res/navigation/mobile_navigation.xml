@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="id.ac.ui.cs.mobileprogramming.fijar.ngebola.ui.fragments.home.HomeFragment"
+        android:name="id.ac.ui.cs.mobileprogramming.fijar.ngebola.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/home_fragment" />
 
     <fragment
         android:id="@+id/navigation_league"
-        android:name="id.ac.ui.cs.mobileprogramming.fijar.ngebola.ui.fragments.league.LeagueFragment"
+        android:name="id.ac.ui.cs.mobileprogramming.fijar.ngebola.ui.league.LeagueFragment"
         android:label="@string/title_league"
         tools:layout="@layout/league_fragment" />
 
     <fragment
         android:id="@+id/navigation_team"
-        android:name="id.ac.ui.cs.mobileprogramming.fijar.ngebola.ui.fragments.team.TeamFragment"
+        android:name="id.ac.ui.cs.mobileprogramming.fijar.ngebola.ui.team.TeamFragment"
         android:label="@string/title_team"
         tools:layout="@layout/team_fragment" />
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="id.ac.ui.cs.mobileprogramming.fijar.ngebola.ui.fragments.profile.ProfileFragment"
+        android:name="id.ac.ui.cs.mobileprogramming.fijar.ngebola.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/profile_fragment" />
 </navigation>

@@ -1,38 +1,76 @@
-<?xml version="1.0" encoding="utf-8"?>
-
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/standing_rank"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    card_view:cardCornerRadius="6dp"
-    card_view:cardElevation="3dp"
-    card_view:cardUseCompatPadding="true">
+    android:paddingTop="@dimen/_10sdp"
+    android:layout_weight="1"
+    android:paddingBottom="@dimen/_10sdp"
+    app:cardBackgroundColor="@color/yujin_color">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:orientation="vertical"
-        android:padding="5dp">
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/_6sdp"
+        android:paddingBottom="@dimen/_6sdp">
 
-        <!-- TextView Nama Mahasiwa -->
         <TextView
-            android:id="@+id/team_name"
-            android:layout_width="@dimen/_128sdp"
-            android:layout_height="wrap_content" />
+            android:id="@+id/standing_pos_team"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:width="@dimen/_20sdp"
+            android:textColor="@color/minju_color" />
 
-        <!-- TextView Npm Mahasiswa -->
         <TextView
-            android:id="@+id/txt_npm_mahasiswa"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <!-- TextView NoHp Mahasiswa -->
+            android:id="@+id/team_name_team"
+            android:layout_width="@dimen/_120sdp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/standing_pos_team"
+            android:textAlignment="center"
+            android:textColor="@color/minju_color"/>
         <TextView
-            android:id="@+id/txt_nohp_mahasiswa"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
+            android:id="@+id/win_holder_team"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/team_name_team"
+            android:textAlignment="center"
+            android:textColor="@color/minju_color"/>
+        <TextView
+            android:id="@+id/draw_holder_team"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/win_holder_team"
+            android:textAlignment="center"
+            android:textColor="@color/minju_color"/>
+        <TextView
+            android:id="@+id/lose_holder_team"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/draw_holder_team"
+            android:textAlignment="center"
+            android:textColor="@color/minju_color"/>
+        <TextView
+            android:id="@+id/gf_holder_team"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/lose_holder_team"
+            android:textAlignment="center"
+            android:textColor="@color/minju_color"/>
+        <TextView
+            android:id="@+id/ga_holder_team"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/gf_holder_team"
+            android:textAlignment="center"
+            android:textColor="@color/minju_color" />
+        <TextView
+            android:id="@+id/gd_holder_team"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/ga_holder_team"
+            android:textAlignment="center"
+            android:textColor="@color/minju_color"/>
+    </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

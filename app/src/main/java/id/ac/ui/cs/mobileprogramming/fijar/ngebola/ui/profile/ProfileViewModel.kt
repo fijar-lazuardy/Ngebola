@@ -1,4 +1,4 @@
-package id.ac.ui.cs.mobileprogramming.fijar.ngebola.ui.fragments.profile
+package id.ac.ui.cs.mobileprogramming.fijar.ngebola.ui.profile
 
 import android.app.Application
 import androidx.lifecycle.*
@@ -20,16 +20,6 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
             userScreen.value = repository.getUserByNameBg()
         }
     }
-
-//    fun getUserCoba(): List<User>? {
-//        return repository.getAllUserBg()
-//    }
-
-//    fun getAllUser() {
-//        viewModelScope.launch {
-//            users.value = repository.getAllUserBg()
-//        }
-//    }
 
     fun insertUser(name: String) {
         val user = User(name = name)
