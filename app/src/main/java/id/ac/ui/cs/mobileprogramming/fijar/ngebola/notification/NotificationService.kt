@@ -47,7 +47,21 @@ class NotificationService : Service() {
     override fun onCreate() {
         super.onCreate()
         var notification = createNotification()
-        startForeground(1, notification)
+        startNotificationListener()
+//        startForeground(1, notification)
+    }
+
+    fun startNotificationListener() {
+        Thread(Runnable {
+            showNotification()
+        })
+    }
+
+    private fun showNotification() {
+        val nm = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+        val notif = createNotification()
+        nm.notify(0, notif)
+
     }
 
     private fun createNotification(): Notification? {
@@ -71,15 +85,26 @@ class NotificationService : Service() {
         }
 
         val builder: Notification.Builder = Notification.Builder(this, notificationChannelId)
-
-        return builder
+        var notifBuilder = NotificationCompat.Builder(
+                this,
+                notificationChannelId
+        ).setSmallIcon(R.drawable.ic_football_ball)
                 .setContentTitle("Top of morning!")
-                .setContentText("Checkout newest standing of your choice!")
+                .setContentText("Cheecck")
                 .setContentIntent(pendingIntent)
-                .setSmallIcon(R.mipmap.ic_launcher_ball)
-                .setTicker("Ticker text")
                 .setAutoCancel(true)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .build()
+
+//        return builder
+//                .setContentTitle("Top of morning!")
+//                .setContentText("Checkout newest standing of your choice!")
+//                .setContentIntent(pendingIntent)
+//                .setSmallIcon(R.mipmap.ic_launcher_ball)
+//                .setTicker("Ticker text")
+//                .setAutoCancel(true)
+//                .build()
+        return notifBuilder
     }
 
 

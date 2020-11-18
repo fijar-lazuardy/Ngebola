@@ -100,8 +100,9 @@ class FirstFragment : Fragment() {
         }
         return view
     }
-    fun uploadImage() {
-        var intent = Intent(Intent.ACTION_PICK)
+
+    private fun uploadImage() {
+        val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
         val mimeTypes = arrayOf("image/jpeg", "image/png")
         intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes)
@@ -113,10 +114,7 @@ class FirstFragment : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 1 && resultCode == RESULT_OK) {
             try {
-                Toast.makeText(activity, "masuk sini", Toast.LENGTH_SHORT).show()
                 imageUri = data?.data!!
-//                val photo: Bitmap = data?.extras?.get("data") as Bitmap
-//                val photo: Bitmap = MediaStore.Images.Media.bi
                 val source: ImageDecoder.Source = ImageDecoder.createSource(activity?.contentResolver!!, imageUri)
                 bitmap = ImageDecoder.decodeBitmap(source)
                 image.setImageBitmap(bitmap)

@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
 
     <application
         android:allowBackup="true"
@@ -22,6 +23,10 @@
             android:enabled="true"
             android:exported="false"
             android:process=":notificationService" />
+        <service android:name=".notification.NotifJobService"
+            android:enabled="true"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
 
         <activity android:name=".notification.NotificationActivity" />
 
@@ -46,8 +51,12 @@
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".receiver.MorningReceiver">
+        <receiver android:name=".receiver.MorningReceiver"
+            android:enabled="true"
+            android:exported="true"
+            android:directBootAware="true">
             <intent-filter>
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>

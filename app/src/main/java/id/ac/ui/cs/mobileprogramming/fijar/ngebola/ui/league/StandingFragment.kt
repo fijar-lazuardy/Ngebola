@@ -29,11 +29,11 @@ class StandingFragment : Fragment() {
                 val cm = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
                 val networkCapabilities = cm.activeNetwork
                 val activeNetwork = cm.getNetworkCapabilities(networkCapabilities)
-                when {
-                    activeNetwork!!.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> isConnected = true
-                    activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> isConnected = true
-                    activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> isConnected = true
-                    else -> isConnected = false
+                isConnected = when {
+                    activeNetwork!!.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+                    activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+                    activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
+                    else -> false
                 }
             }
         }
