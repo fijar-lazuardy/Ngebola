@@ -12,4 +12,8 @@
     <string name="league_country_descriptor">Negara</string>
     <string name="league_season_descriptor">Musim</string>
     <string name="team_name_standing">Tim</string>
+    <string name="see_stat_btn">Lihat Statistik</string>
+    <string name="nationality">Asal Negara</string>
+    <string name="notification_title">Pagi! Pagi! Pagi!</string>
+    <string name="notification_text">Lihat Update Klasemen Di sini!</string>
 </resources>

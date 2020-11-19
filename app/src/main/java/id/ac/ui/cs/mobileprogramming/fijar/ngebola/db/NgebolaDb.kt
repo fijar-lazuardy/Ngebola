@@ -8,7 +8,9 @@ import androidx.room.TypeConverters
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.league.League
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.league.LeagueDao
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.player.Player
+import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.player.PlayerDao
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.team.Team
+import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.team.TeamDao
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.user.User
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.user.UserDao
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.user.UserOnlyDao
@@ -18,8 +20,8 @@ abstract class NgebolaDb : RoomDatabase() {
     abstract fun userOnlyDao(): UserOnlyDao
     abstract fun LeagueDao(): LeagueDao
     abstract fun userDao(): UserDao
-//    abstract fun PlayerDao(): PlayerDao
-//    abstract fun TeamDao(): TeamDao
+    abstract fun PlayerDao(): PlayerDao
+    abstract fun TeamDao(): TeamDao
 
     companion object {
         @Volatile

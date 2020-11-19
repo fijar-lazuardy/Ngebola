@@ -27,6 +27,10 @@
     <string name="gf_placeholder" translatable="false">GF</string>
     <string name="ga_placeholder" translatable="false">GA</string>
     <string name="gd_placeholder" translatable="false">GD</string>
+    <string name="see_stat_btn">See Statistic</string>
+    <string name="nationality">Nationality</string>
+    <string name="notification_title">Top Of The Morning!</string>
+    <string name="notification_text">Check standing\'s update here!</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>

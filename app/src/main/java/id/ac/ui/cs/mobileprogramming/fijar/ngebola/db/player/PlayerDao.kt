@@ -7,6 +7,10 @@ import androidx.room.Query
 
 @Dao
 interface PlayerDao {
+
+    @Query("SELECT * FROM player")
+    suspend fun getPlayer(): List<Player>
+
     @Query("SELECT * FROM player WHERE player_id = :player_id")
     suspend fun getPlayerById(player_id: String): Player
 

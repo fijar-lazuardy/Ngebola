@@ -24,22 +24,7 @@ class StandingFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.standing_fragment, container, false)
         viewModel = ViewModelProvider(this).get(StandingViewModel::class.java)
-        val receiver = object : NetworkReceiver() {
-            override fun onReceive(context: Context?, intent: Intent?) {
-                val cm = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-                val networkCapabilities = cm.activeNetwork
-                val activeNetwork = cm.getNetworkCapabilities(networkCapabilities)
-                isConnected = when {
-                    activeNetwork!!.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
-                    activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
-                    activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
-                    else -> false
-                }
-            }
-        }
-        if (!receiver.isConnected) {
-            Toast.makeText(context, "Connection lost", Toast.LENGTH_SHORT).show()
-        }
+
         return view
     }
 

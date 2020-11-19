@@ -7,6 +7,9 @@ import androidx.room.Query
 
 @Dao
 interface TeamDao {
+    @Query("SELECT * FROM team")
+    suspend fun getTeam(): List<Team>
+
     @Query("SELECT * FROM team WHERE team_id=:teamId")
     suspend fun getTeamById(teamId: String): Team
 

@@ -29,28 +29,13 @@ class MainActivity : AppCompatActivity() {
 
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
-
-        try {
-            val calendar = Calendar.getInstance()
-            calendar.set(Calendar.HOUR_OF_DAY, 10)
-            calendar.set(Calendar.MINUTE, 0)
-            calendar.set(Calendar.SECOND, 0)
-            val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-            val intent = Intent(this, MorningReceiver::class.java)
-            val pendingIntent = PendingIntent.getBroadcast(this, 100, intent, PendingIntent.FLAG_CANCEL_CURRENT)
-            alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pendingIntent)
-            Toast.makeText(applicationContext, calendar.toString(), Toast.LENGTH_SHORT).show()
-        }
-        catch (e: Exception) {
-            Toast.makeText(applicationContext, "GAGAL ANJINGGG", Toast.LENGTH_SHORT).show()
-        }
-
         val appBarConfiguration = AppBarConfiguration.Builder(
             R.id.navigation_home,
             R.id.navigation_league,
             R.id.navigation_team,
             R.id.navigation_profile
         ).build()
+
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }

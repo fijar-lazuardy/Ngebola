@@ -2,10 +2,93 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout"
+    android:id="@+id/player_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
 
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:id="@+id/player_name_card"
+        android:layout_height="@dimen/_40sdp"
+        app:cardCornerRadius="@dimen/_12sdp"
+        app:cardBackgroundColor="@color/mina_color"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingTop="@dimen/_12sdp"
+        android:paddingBottom="@dimen/_12sdp"
+        app:layout_constraintBottom_toTopOf="@id/player_nationality_card">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/player_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:minWidth="@dimen/_120sdp"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:text="@string/name_label"
+                android:gravity="center_vertical" />
+
+            <TextView
+                android:id="@+id/player_name_value"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_toEndOf="@id/player_name"
+                android:minWidth="@dimen/_120sdp"
+                android:text="" />
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/player_nationality_card"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_40sdp"
+        app:cardCornerRadius="@dimen/_12sdp"
+        app:cardBackgroundColor="@color/mina_color"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/player_name_card"
+        app:layout_constraintBottom_toTopOf="@id/button">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/player_nationality"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:minWidth="@dimen/_120sdp"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:text="TextView"
+                android:gravity="center_vertical"/>
+
+            <TextView
+                android:id="@+id/player_nationality_value"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_toEndOf="@id/player_nationality"
+                android:minWidth="@dimen/_120sdp"
+                android:text="" />
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/see_stat_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/player_nationality_card"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -30,16 +30,6 @@
 
         <activity android:name=".notification.NotificationActivity" />
 
-        <provider
-            android:name=".storageprovider.UserDocumentProvider"
-            android:authorities="id.ac.ui.cs.mobileprogramming.fijar.ngebola.storageprovider.documents"
-            android:exported="true"
-            android:grantUriPermissions="true"
-            android:permission="android.permission.MANAGE_DOCUMENTS">
-            <intent-filter>
-                <action android:name="android.content.action.DOCUMENTS_PROVIDER" />
-            </intent-filter>
-        </provider>
 
         <receiver android:name=".receiver.HeadsetPlugReceiver">
             <intent-filter>

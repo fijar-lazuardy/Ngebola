@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_weight="2"
+    tools:context=".ui.league.LeagueFragment"
+    android:id="@+id/relativeLayout">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/league_detail_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_24sdp"
+        app:cardElevation="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/league_descriptor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:width="@dimen/_115sdp"
+                android:text="@string/league_name_descriptor"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/league_name"
+                android:layout_width="@dimen/_115sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_toEndOf="@id/league_descriptor"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/league_country_descriptor"
+                android:layout_width="@dimen/_115sdp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/league_descriptor"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:text="@string/league_country_descriptor"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/league_country"
+                android:layout_width="@dimen/_115sdp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/league_name"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_toEndOf="@id/league_descriptor"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/season_descriptor"
+                android:layout_width="@dimen/_115sdp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/league_country_descriptor"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:text="@string/league_season_descriptor"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/league_season"
+                android:layout_width="@dimen/_115sdp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/league_country"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_toEndOf="@id/league_descriptor"
+                android:text="" />
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:id="@+id/standing_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginEnd="@dimen/_12sdp"
+        android:layout_marginBottom="84dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/league_detail_container">
+
+        <include layout="@layout/standing_desc" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <!--        <include layout="@layout/standing_one" />-->
+
+        <!--        <include layout="@layout/standing_two" />-->
+
+        <!--        <include layout="@layout/standing_three" />-->
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

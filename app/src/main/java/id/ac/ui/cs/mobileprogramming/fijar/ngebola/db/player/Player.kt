@@ -11,9 +11,7 @@ data class Player(
     @PrimaryKey
     var player_id: Int,
     @ColumnInfo(name = "name")
-    var name: String,
+    var name: String?,
     @ColumnInfo(name = "nationality")
-    var nationality: String,
-    @ColumnInfo(name = "birth_date")
-    var birth_date: String
+    var nationality: String?
 )

@@ -1,6 +1,9 @@
 package id.ac.ui.cs.mobileprogramming.fijar.ngebola.ui.start
 
 import android.app.Activity.RESULT_OK
+import android.app.AlarmManager
+import android.app.PendingIntent
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
@@ -14,12 +17,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.MainActivity
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.R
+import id.ac.ui.cs.mobileprogramming.fijar.ngebola.receiver.MorningReceiver
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.shared_preferences.UserSharedPreferenceManager
 import java.lang.Exception
+import java.util.*
 
 class FirstFragment : Fragment() {
     private lateinit var viewModel: OnBoardingSharedViewModel
@@ -88,7 +94,8 @@ class FirstFragment : Fragment() {
             sharedPrefManager = UserSharedPreferenceManager(requireContext())
             sharedPrefManager.setFirstTime(false)
 //            viewModel.inputUserInfo(inputName.text.toString().trim())
-            viewModel.insertUserInfo(inputName.text.toString().trim(), leagueId, bitmap)
+            viewModel.insertUserInfo(inputName.text.toString().trim(), leagueId, bitmap, playerId, teamId)
+            setNotification()
             viewModel.isDoneLoading.observe(viewLifecycleOwner, Observer {
                 if (it == true) {
                     loadingScreen.visibility = View.GONE
@@ -123,6 +130,22 @@ class FirstFragment : Fragment() {
             catch (e: Exception) {
 
             }
+        }
+    }
+
+    private fun setNotification() {
+        try {
+            val calendar = Calendar.getInstance()
+            calendar.set(Calendar.HOUR_OF_DAY, 16)
+            calendar.set(Calendar.MINUTE, 50)
+            calendar.set(Calendar.SECOND, 0)
+            val alarmManager = activity?.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+            val intent = Intent(requireContext(), MorningReceiver::class.java)
+            val pendingIntent = PendingIntent.getBroadcast(requireContext(), 1, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+            alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pendingIntent)
+        }
+        catch (e: Exception) {
+            Toast.makeText(requireContext(), "Notification failed", Toast.LENGTH_SHORT).show()
         }
     }
 
