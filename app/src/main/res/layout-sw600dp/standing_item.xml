@@ -1,9 +1,11 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/standing_rank"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/_4sdp"
+    android:paddingTop="@dimen/_10sdp"
+    android:layout_weight="1"
+    android:paddingBottom="@dimen/_10sdp"
     app:cardBackgroundColor="@color/yujin_color">
 
     <RelativeLayout
@@ -13,60 +15,67 @@
         android:paddingBottom="@dimen/_6sdp">
 
         <TextView
-            android:id="@+id/standing_pos_two"
+            android:id="@+id/standing_pos_team"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_12sdp"
-            android:width="@dimen/_20sdp"
+            android:width="@dimen/_40sdp"
             android:textColor="@color/minju_color" />
 
         <TextView
-            android:id="@+id/team_name_two"
-            android:layout_width="@dimen/_120sdp"
+            android:id="@+id/team_name_team"
+            android:layout_width="@dimen/_140sdp"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/standing_pos_two"
+            android:layout_toEndOf="@id/standing_pos_team"
             android:textAlignment="center"
             android:textColor="@color/minju_color"/>
         <TextView
-            android:id="@+id/win_holder_two"
-            android:layout_width="@dimen/_20sdp"
+            android:id="@+id/win_holder_team"
+            android:layout_width="@dimen/_40sdp"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/team_name_two"
+            android:layout_toEndOf="@id/team_name_team"
             android:textAlignment="center"
             android:textColor="@color/minju_color"/>
         <TextView
-            android:id="@+id/draw_holder_two"
-            android:layout_width="@dimen/_20sdp"
+            android:id="@+id/draw_holder_team"
+            android:layout_width="@dimen/_40sdp"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/win_holder_two"
+            android:layout_toEndOf="@id/win_holder_team"
             android:textAlignment="center"
             android:textColor="@color/minju_color"/>
         <TextView
-            android:id="@+id/lose_holder_two"
-            android:layout_width="@dimen/_20sdp"
+            android:id="@+id/lose_holder_team"
+            android:layout_width="@dimen/_40sdp"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/draw_holder_two"
+            android:layout_toEndOf="@id/draw_holder_team"
             android:textAlignment="center"
             android:textColor="@color/minju_color"/>
         <TextView
-            android:id="@+id/gf_holder_two"
-            android:layout_width="@dimen/_24sdp"
+            android:id="@+id/gf_holder_team"
+            android:layout_width="@dimen/_44sdp"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/lose_holder_two"
+            android:layout_toEndOf="@id/lose_holder_team"
             android:textAlignment="center"
             android:textColor="@color/minju_color"/>
         <TextView
-            android:id="@+id/ga_holder_two"
-            android:layout_width="@dimen/_24sdp"
+            android:id="@+id/ga_holder_team"
+            android:layout_width="@dimen/_44sdp"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/gf_holder_two"
+            android:layout_toEndOf="@id/gf_holder_team"
             android:textAlignment="center"
             android:textColor="@color/minju_color" />
         <TextView
-            android:id="@+id/gd_holder_two"
-            android:layout_width="@dimen/_24sdp"
+            android:id="@+id/gd_holder_team"
+            android:layout_width="@dimen/_44sdp"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/ga_holder_two"
+            android:layout_toEndOf="@id/ga_holder_team"
+            android:textAlignment="center"
+            android:textColor="@color/minju_color"/>
+        <TextView
+            android:id="@+id/point_holder_team"
+            android:layout_width="@dimen/_48sdp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/gd_holder_team"
             android:textAlignment="center"
             android:textColor="@color/minju_color"/>
     </RelativeLayout>

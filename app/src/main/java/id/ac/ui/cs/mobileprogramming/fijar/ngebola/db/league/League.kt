@@ -2,6 +2,7 @@ package id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.league
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity
 data class League (
@@ -9,4 +10,4 @@ data class League (
     val name: String?,
     val country: String?,
     val season: Int?
-)
+): Serializable

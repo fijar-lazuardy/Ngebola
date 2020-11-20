@@ -126,7 +126,6 @@ class FirstFragment : Fragment() {
                 image.contentDescription = "User's profile picture"
             }
             catch (e: Exception) {
-
             }
         }
     }

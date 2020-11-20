@@ -18,5 +18,6 @@
     <string name="notification_text">Lihat Update Klasemen Di sini!</string>
     <string name="season_holder">Musim</string>
     <string name="standing_text">Klasemen</string>
+    <string name="choose_photo">Pilih foto</string>
 
 </resources>

@@ -10,9 +10,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.replace
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -25,13 +29,14 @@ class LeagueFragment : Fragment() {
     private lateinit var leagueViewModel: LeagueViewModel
     private lateinit var recyclerView: RecyclerView
     private lateinit var intent: Intent
+    private lateinit var args: Bundle
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         leagueViewModel =
-            ViewModelProvider(this).get(LeagueViewModel::class.java)
+            ViewModelProvider(requireActivity()).get(LeagueViewModel::class.java)
         val view = inflater.inflate(R.layout.league_fragment, container, false)
 
         leagueViewModel.getLeagueInfo()
@@ -39,13 +44,18 @@ class LeagueFragment : Fragment() {
         val leagueName: TextView = view.findViewById(R.id.league_info_value)
         val leagueCountry: TextView = view.findViewById(R.id.league_country_value)
         val leagueSeason: TextView = view.findViewById(R.id.league_season_value)
+        val standingButton: Button = view.findViewById(R.id.standing_button)
 
         leagueViewModel.leagueInfo.observe(viewLifecycleOwner, Observer<League> {
             leagueName.text = it.name
             leagueCountry.text = it.country
             leagueSeason.text = it.season.toString()
+            args = Bundle()
+            args.putInt("league_id", it.league_id!!)
+
+
 //            intent = Intent(requireContext(), )
-//            leagueViewModel.getStandingInfo(it.league_id!!)
+            leagueViewModel.getStandingInfo(it.league_id!!)
         })
 
 //        recyclerView = view.findViewById(R.id.recycler_view)
@@ -53,11 +63,18 @@ class LeagueFragment : Fragment() {
 
 
 //        leagueViewModel.standingInfo.observe(viewLifecycleOwner, Observer {
-//            val adapter = RecyclerAdapter(requireContext(), it)
-//            recyclerView.adapter = adapter
+
 //        })
 
+        standingButton.setOnClickListener {
+            val fragment = StandingFragment()
+            fragment.arguments = args
 
+            val fm = parentFragmentManager.beginTransaction()
+            fm.addToBackStack("league_fragment")
+            fm.replace(R.id.nav_host_fragment, fragment)
+            fm.commit()
+        }
 
         return view
     }

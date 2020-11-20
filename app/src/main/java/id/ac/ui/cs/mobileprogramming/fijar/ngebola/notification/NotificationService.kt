@@ -46,7 +46,6 @@ class NotificationService : Service() {
 
     override fun onCreate() {
         super.onCreate()
-        var notification = createNotification()
         startNotificationListener()
 //        startForeground(1, notification)
     }
@@ -84,7 +83,6 @@ class NotificationService : Service() {
             PendingIntent.getActivity(this, 0, notificationIntent, 0)
         }
 
-        val builder: Notification.Builder = Notification.Builder(this, notificationChannelId)
         var notifBuilder = NotificationCompat.Builder(
                 this,
                 notificationChannelId

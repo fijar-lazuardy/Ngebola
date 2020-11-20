@@ -15,6 +15,7 @@
     <string name="la_liga_league" translatable="false">La Liga</string>
     <string name="salah_player" translatable="false">M. Salah</string>
     <string name="son_player" translatable="false">Son Heung Min</string>
+    <string name="choose_photo">Choose photo</string>
     <!-- Strings used for fragments for navigation -->
     <string name="league_name_descriptor">League Name</string>
     <string name="league_country_descriptor">Country</string>
