@@ -16,4 +16,7 @@
     <string name="nationality">Asal Negara</string>
     <string name="notification_title">Pagi! Pagi! Pagi!</string>
     <string name="notification_text">Lihat Update Klasemen Di sini!</string>
+    <string name="season_holder">Musim</string>
+    <string name="standing_text">Klasemen</string>
+
 </resources>

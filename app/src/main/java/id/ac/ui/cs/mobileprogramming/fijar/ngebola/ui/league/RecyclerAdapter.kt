@@ -19,6 +19,7 @@ class RecyclerAdapter(internal var context: Context, internal var standingList: 
         val gfTeam: TextView = view.findViewById(R.id.gf_holder_team)
         val gaTeam: TextView = view.findViewById(R.id.ga_holder_team)
         val gdTeam: TextView = view.findViewById(R.id.gd_holder_team)
+        val pointTeam: TextView = view.findViewById(R.id.point_holder_team)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StandingHolder {
@@ -39,6 +40,6 @@ class RecyclerAdapter(internal var context: Context, internal var standingList: 
         holder.gfTeam.text = standingList[position].all?.goalsFor.toString()
         holder.gaTeam.text = standingList[position].all?.goalsAgainst.toString()
         holder.gdTeam.text = standingList[position].goalsDiff.toString()
-
+        holder.pointTeam.text = standingList[position].points.toString()
     }
 }

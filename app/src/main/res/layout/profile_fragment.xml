@@ -18,6 +18,7 @@
             android:adjustViewBounds="true"
             app:layout_constraintBottom_toTopOf="@id/name_card"
             app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/ic_football_ball"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintWidth_max="@dimen/_100sdp" />

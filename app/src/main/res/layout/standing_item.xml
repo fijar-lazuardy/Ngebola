@@ -71,6 +71,13 @@
             android:layout_toEndOf="@id/ga_holder_team"
             android:textAlignment="center"
             android:textColor="@color/minju_color"/>
+        <TextView
+            android:id="@+id/point_holder_team"
+            android:layout_width="@dimen/_28sdp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/gd_holder_team"
+            android:textAlignment="center"
+            android:textColor="@color/minju_color"/>
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

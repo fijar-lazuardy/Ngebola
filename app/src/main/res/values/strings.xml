@@ -19,7 +19,7 @@
     <string name="league_name_descriptor">League Name</string>
     <string name="league_country_descriptor">Country</string>
     <string name="league_season_descriptor">League Name</string>
-    <string name="rank_placeholder" translatable="false">Pos</string>
+    <string name="rank_placeholder" translatable="false">R</string>
     <string name="team_name_standing">Team</string>
     <string name="win_placeholder" translatable="false">W</string>
     <string name="draw_placeholder" translatable="false">D</string>
@@ -27,14 +27,16 @@
     <string name="gf_placeholder" translatable="false">GF</string>
     <string name="ga_placeholder" translatable="false">GA</string>
     <string name="gd_placeholder" translatable="false">GD</string>
+    <string name="point_placeholder" translatable="false">P</string>
     <string name="see_stat_btn">See Statistic</string>
     <string name="nationality">Nationality</string>
     <string name="notification_title">Top Of The Morning!</string>
     <string name="notification_text">Check standing\'s update here!</string>
+    <string name="season_holder">Season</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-
+    <string name="standing_text">See Standing</string>
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>

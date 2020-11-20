@@ -24,6 +24,7 @@ class LeagueFragment : Fragment() {
 
     private lateinit var leagueViewModel: LeagueViewModel
     private lateinit var recyclerView: RecyclerView
+    private lateinit var intent: Intent
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,40 +36,26 @@ class LeagueFragment : Fragment() {
 
         leagueViewModel.getLeagueInfo()
 
-        val leagueName: TextView = view.findViewById(R.id.league_name)
-        val leagueCountry: TextView = view.findViewById(R.id.league_country)
-        val leagueSeason: TextView = view.findViewById(R.id.league_season)
+        val leagueName: TextView = view.findViewById(R.id.league_info_value)
+        val leagueCountry: TextView = view.findViewById(R.id.league_country_value)
+        val leagueSeason: TextView = view.findViewById(R.id.league_season_value)
 
         leagueViewModel.leagueInfo.observe(viewLifecycleOwner, Observer<League> {
             leagueName.text = it.name
             leagueCountry.text = it.country
             leagueSeason.text = it.season.toString()
-            leagueViewModel.getStandingInfo(it.league_id!!)
+//            intent = Intent(requireContext(), )
+//            leagueViewModel.getStandingInfo(it.league_id!!)
         })
 
-        recyclerView = view.findViewById(R.id.recycler_view)
-        recyclerView.layoutManager = LinearLayoutManager(activity)
-        val receiver = object : NetworkReceiver() {
-            override fun onReceive(context: Context?, intent: Intent?) {
-                val cm = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-                val networkCapabilities = cm.activeNetwork
-                val activeNetwork = cm.getNetworkCapabilities(networkCapabilities)
-                when {
-                    activeNetwork!!.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> isConnected = true
-                    activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> isConnected = true
-                    activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> isConnected = true
-                    else -> isConnected = false
-                }
-            }
-        }
-        if (!receiver.isConnected) {
-            Toast.makeText(context, "Connection lost", Toast.LENGTH_SHORT).show()
-        }
+//        recyclerView = view.findViewById(R.id.recycler_view)
+//        recyclerView.layoutManager = LinearLayoutManager(activity)
 
-        leagueViewModel.standingInfo.observe(viewLifecycleOwner, Observer {
-            val adapter = RecyclerAdapter(requireContext(), it)
-            recyclerView.adapter = adapter
-        })
+
+//        leagueViewModel.standingInfo.observe(viewLifecycleOwner, Observer {
+//            val adapter = RecyclerAdapter(requireContext(), it)
+//            recyclerView.adapter = adapter
+//        })
 
 
 

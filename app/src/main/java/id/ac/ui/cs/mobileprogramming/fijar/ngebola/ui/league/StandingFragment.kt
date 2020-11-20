@@ -25,12 +25,7 @@ class StandingFragment : Fragment() {
         val view = inflater.inflate(R.layout.standing_fragment, container, false)
         viewModel = ViewModelProvider(this).get(StandingViewModel::class.java)
 
+
         return view
     }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        // TODO: Use the ViewModel
-    }
-
 }

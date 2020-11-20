@@ -50,7 +50,6 @@ class FirstFragment : Fragment() {
         val rgTeam: RadioGroup = view.findViewById(R.id.team_button)
         val rgLeague: RadioGroup = view.findViewById(R.id.league_button)
         val rgPlayer: RadioGroup = view.findViewById(R.id.player_button)
-        val progressBar: ProgressBar = view.findViewById(R.id.progressBar)
         val loadingScreen: RelativeLayout = view.findViewById(R.id.loading_screen)
         val uploadImageBtn: Button = view.findViewById(R.id.choose_picture)
         image = view.findViewById(R.id.user_image)
@@ -93,7 +92,6 @@ class FirstFragment : Fragment() {
             loadingScreen.visibility = View.VISIBLE
             sharedPrefManager = UserSharedPreferenceManager(requireContext())
             sharedPrefManager.setFirstTime(false)
-//            viewModel.inputUserInfo(inputName.text.toString().trim())
             viewModel.insertUserInfo(inputName.text.toString().trim(), leagueId, bitmap, playerId, teamId)
             setNotification()
             viewModel.isDoneLoading.observe(viewLifecycleOwner, Observer {
@@ -136,13 +134,13 @@ class FirstFragment : Fragment() {
     private fun setNotification() {
         try {
             val calendar = Calendar.getInstance()
-            calendar.set(Calendar.HOUR_OF_DAY, 16)
-            calendar.set(Calendar.MINUTE, 50)
+            calendar.set(Calendar.HOUR_OF_DAY, 9)
+            calendar.set(Calendar.MINUTE, 0)
             calendar.set(Calendar.SECOND, 0)
             val alarmManager = activity?.getSystemService(Context.ALARM_SERVICE) as AlarmManager
             val intent = Intent(requireContext(), MorningReceiver::class.java)
             val pendingIntent = PendingIntent.getBroadcast(requireContext(), 1, intent, PendingIntent.FLAG_UPDATE_CURRENT)
-            alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pendingIntent)
+            alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pendingIntent)
         }
         catch (e: Exception) {
             Toast.makeText(requireContext(), "Notification failed", Toast.LENGTH_SHORT).show()
