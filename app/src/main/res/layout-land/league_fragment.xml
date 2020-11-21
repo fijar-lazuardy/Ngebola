@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.league.LeagueFragment">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:id="@+id/league_info_card"
+        android:layout_height="@dimen/_40sdp"
+        app:cardCornerRadius="@dimen/_12sdp"
+        app:cardBackgroundColor="@color/mina_color"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingTop="@dimen/_12sdp"
+        android:paddingBottom="@dimen/_12sdp"
+        app:layout_constraintBottom_toTopOf="@id/league_country_card">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/league_info_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:minWidth="@dimen/_120sdp"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:text="@string/name_label"
+                android:gravity="center_vertical"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/league_info_value"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_toEndOf="@id/league_info_name"
+                android:minWidth="@dimen/_120sdp"
+                android:text="" />
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:id="@+id/league_country_card"
+        android:layout_height="@dimen/_40sdp"
+        app:cardCornerRadius="@dimen/_12sdp"
+        app:cardBackgroundColor="@color/mina_color"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/league_info_card"
+        app:layout_constraintBottom_toTopOf="@id/league_season_card"
+        android:paddingTop="@dimen/_12sdp"
+        android:paddingBottom="@dimen/_12sdp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/league_country_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:minWidth="@dimen/_120sdp"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:text="@string/league_country_descriptor"
+                android:gravity="center_vertical"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/league_country_value"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_toEndOf="@id/league_country_name"
+                android:minWidth="@dimen/_120sdp"
+                android:text="" />
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:id="@+id/league_season_card"
+        android:layout_height="@dimen/_40sdp"
+        app:cardCornerRadius="@dimen/_12sdp"
+        app:cardBackgroundColor="@color/mina_color"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingTop="@dimen/_12sdp"
+        android:paddingBottom="@dimen/_12sdp"
+        app:layout_constraintBottom_toTopOf="@id/guideline_2"
+        app:layout_constraintTop_toBottomOf="@id/league_country_card">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/league_season_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:minWidth="@dimen/_120sdp"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:text="@string/season_holder"
+                android:gravity="center_vertical"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/league_season_value"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_toEndOf="@id/league_season_name"
+                android:minWidth="@dimen/_120sdp"
+                android:text="" />
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.7"
+        />
+
+    <Button
+        android:id="@+id/standing_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/guideline_2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/standing_text" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

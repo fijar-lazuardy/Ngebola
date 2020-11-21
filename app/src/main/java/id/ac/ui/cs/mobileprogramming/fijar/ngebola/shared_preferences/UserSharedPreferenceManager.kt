@@ -4,6 +4,7 @@ import android.content.Context
 
 class UserSharedPreferenceManager(context: Context) {
     private val FIRST_TIME = "isFirstTime"
+    private val service_key = "SERVICE_STATE"
     private val sharedPreference = context.getSharedPreferences("user", Context.MODE_PRIVATE)
     private val spEditor = sharedPreference.edit()
 
@@ -15,5 +16,4 @@ class UserSharedPreferenceManager(context: Context) {
     fun isFirstTime(): Boolean {
         return sharedPreference.getBoolean(FIRST_TIME, true)
     }
-
 }

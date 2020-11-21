@@ -1,19 +1,25 @@
 package id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.user
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
-
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import androidx.room.*
+import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.league.League
+import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.player.Player
+import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.team.Team
+import java.io.ByteArrayOutputStream
+import java.util.*
 
 @Dao
-interface UserDao {
+abstract class UserDao {
     @Query("SELECT * FROM users WHERE name=:name")
-    fun getUserByName(name: String): User
+    abstract fun getUserByName(name: String): User
 
     @Query("SELECT * FROM users WHERE id=1")
-    fun getUser(): User
+    abstract fun getUser(): User
+
+    @Query("SELECT * FROM users")
+    abstract fun getAllUser(): List<User>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertUser(user: User)
-}
+    abstract fun insertUser(user: User)
+    }

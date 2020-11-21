@@ -3,6 +3,11 @@
     package="id.ac.ui.cs.mobileprogramming.fijar.ngebola">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
 
     <application
         android:allowBackup="true"
@@ -11,8 +16,43 @@
         android:roundIcon="@mipmap/ic_launcher_ball"
         android:supportsRtl="true"
         android:theme="@style/Theme.Ngebola">
+        <activity android:name=".ui.start.ChoosePictureActivity"></activity>
+
+        <service
+            android:name=".notification.NotificationService"
+            android:enabled="true"
+            android:exported="false"
+            android:process=":notificationService" />
+        <service android:name=".notification.NotifJobService"
+            android:enabled="true"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <activity android:name=".notification.NotificationActivity" />
+
+
+        <receiver android:name=".receiver.HeadsetPlugReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.HEADSET_PLUG" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".receiver.NetworkReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".receiver.MorningReceiver"
+            android:enabled="true"
+            android:exported="true"
+            android:directBootAware="true">
+            <intent-filter>
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
         <activity
-            android:name=".start.OnboardingActivity"
+            android:name=".ui.start.OnboardingActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.Ngebola.NoActionBar">
             <intent-filter>
@@ -21,12 +61,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" android:label="@string/app_name">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.DEFAULT" />
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+                <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             </intent-filter>
         </activity>
     </application>

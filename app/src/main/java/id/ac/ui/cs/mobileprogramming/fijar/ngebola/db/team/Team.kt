@@ -8,6 +8,7 @@ import java.io.Serializable
 @Entity(tableName = "team")
 data class Team (
     @PrimaryKey var team_id: Int,
-    val name: String,
-    val country: String
+    val name: String?,
+    val country: String?,
+    val logo: String?
 ): Serializable

@@ -6,4 +6,18 @@
     <string name="title_profile">Profil</string>
     <string name="name_label">Nama</string>
     <string name="curr_lang">Bahasa</string>
+    <string name="name_input_placeholder">Masukkan nama</string>
+    <string name="next">Lanjut</string>
+    <string name="league_name_descriptor">Nama Liga</string>
+    <string name="league_country_descriptor">Negara</string>
+    <string name="league_season_descriptor">Musim</string>
+    <string name="team_name_standing">Tim</string>
+    <string name="see_stat_btn">Lihat Statistik</string>
+    <string name="nationality">Asal Negara</string>
+    <string name="notification_title">Pagi! Pagi! Pagi!</string>
+    <string name="notification_text">Lihat Update Klasemen Di sini!</string>
+    <string name="season_holder">Musim</string>
+    <string name="standing_text">Klasemen</string>
+    <string name="choose_photo">Pilih foto</string>
+
 </resources>
