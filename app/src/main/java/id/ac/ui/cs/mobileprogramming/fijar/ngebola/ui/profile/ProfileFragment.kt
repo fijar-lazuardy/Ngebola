@@ -1,10 +1,6 @@
 package id.ac.ui.cs.mobileprogramming.fijar.ngebola.ui.profile
 
-import android.content.Intent
 import android.graphics.Bitmap
-import android.graphics.ImageDecoder
-import android.media.Image
-import android.net.Uri
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -16,9 +12,6 @@ import android.widget.TextView
 import androidx.lifecycle.Observer
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.R
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.user.User
-import id.ac.ui.cs.mobileprogramming.fijar.ngebola.notification.Actions
-import id.ac.ui.cs.mobileprogramming.fijar.ngebola.notification.ServiceState
-import id.ac.ui.cs.mobileprogramming.fijar.ngebola.notification.getServiceState
 
 class ProfileFragment : Fragment() {
     private lateinit var profileViewModel: ProfileViewModel

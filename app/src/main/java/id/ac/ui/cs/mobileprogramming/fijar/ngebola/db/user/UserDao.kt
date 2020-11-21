@@ -22,23 +22,4 @@ abstract class UserDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun insertUser(user: User)
-
-//    fun insertUserWithLeague(user: User, league: League, player: Player, team: Team) {
-//        user.league = league
-//        user.player = player
-//        user.team = team
-//    }
-}
-//class DataConverter {
-//    @TypeConverter
-//    fun convertToString(bitmap: Bitmap): ByteArray {
-//        val bos = ByteArrayOutputStream()
-//        bitmap.compress(Bitmap.CompressFormat.JPEG, 80, bos)
-//        return bos.toByteArray()
-//    }
-//
-//    fun convertToBitmap(imageString: String): Bitmap {
-//        val decodedBytes = Base64.getDecoder().decode(imageString)
-//        return BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.size)
-//    }
-//}
+    }
