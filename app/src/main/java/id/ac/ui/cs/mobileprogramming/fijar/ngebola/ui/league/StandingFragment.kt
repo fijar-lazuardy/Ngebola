@@ -26,10 +26,6 @@ class StandingFragment : Fragment() {
         viewModel = ViewModelProvider(requireActivity()).get(LeagueViewModel::class.java)
         recyclerView = view.findViewById(R.id.recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-
-        val leagueId = arguments?.getInt("league_id")
-//        viewModel.getStandingInfo(leagueId!!)
-
         viewModel.standingInfo.observe(viewLifecycleOwner, Observer {
             val recyclerAdapter = RecyclerAdapter(requireContext(), it)
             recyclerView.adapter = recyclerAdapter

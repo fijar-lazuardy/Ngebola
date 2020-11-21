@@ -75,7 +75,7 @@
                     android:layout_marginStart="@dimen/_12sdp"
                     android:gravity="center_vertical"
                     android:minWidth="@dimen/_120sdp"
-                    android:text="@string/league_country_descriptor"
+                    android:text="@string/nationality"
                     android:textStyle="bold" />
 
                 <TextView
