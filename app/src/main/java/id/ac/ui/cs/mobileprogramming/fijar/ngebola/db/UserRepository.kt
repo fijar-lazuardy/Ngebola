@@ -33,9 +33,6 @@ class UserRepository(application: Application) : CoroutineScope {
     }
 
     fun insertUser(user: User) {
-//        launch {
-//            insertUserBg(user)
-//        }
         userOnlyDao?.insertUser(user)
     }
 
@@ -44,19 +41,4 @@ class UserRepository(application: Application) : CoroutineScope {
             userOnlyDao?.insertUser(user)
         }
     }
-
-//    fun insertUser(user: User, league: League) {
-////        launch {
-////        insertUserBg(user, league)
-////        }
-//        userDao?.insertUserWithLeague(user, league)
-//    }
-//
-//    private suspend fun insertUserBg(user: User, league: League) {
-//        withContext(Dispatchers.IO) {
-//            userDao?.insertUserWithLeague(user, league)
-//        }
-//    }
-
-
 }

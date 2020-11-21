@@ -13,14 +13,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import id.ac.ui.cs.mobileprogramming.fijar.ngebola.notification.Actions
-import id.ac.ui.cs.mobileprogramming.fijar.ngebola.notification.NotificationService
-import id.ac.ui.cs.mobileprogramming.fijar.ngebola.notification.ServiceState
-import id.ac.ui.cs.mobileprogramming.fijar.ngebola.notification.getServiceState
-import id.ac.ui.cs.mobileprogramming.fijar.ngebola.receiver.HeadsetPlugReceiver
-import id.ac.ui.cs.mobileprogramming.fijar.ngebola.receiver.MorningReceiver
-import java.lang.Exception
-import java.util.*
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,5 +30,15 @@ class MainActivity : AppCompatActivity() {
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+    }
+
+    override fun onBackPressed() {
+        val count = supportFragmentManager.backStackEntryCount
+
+        if (count == 0 ) {
+            super.onBackPressed()
+        } else {
+            supportFragmentManager.popBackStack()
+        }
     }
 }

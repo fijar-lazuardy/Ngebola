@@ -45,6 +45,7 @@ class LeagueFragment : Fragment() {
         val leagueCountry: TextView = view.findViewById(R.id.league_country_value)
         val leagueSeason: TextView = view.findViewById(R.id.league_season_value)
         val standingButton: Button = view.findViewById(R.id.standing_button)
+        standingButton.visibility = View.INVISIBLE
 
         leagueViewModel.leagueInfo.observe(viewLifecycleOwner, Observer<League> {
             leagueName.text = it.name
@@ -58,13 +59,15 @@ class LeagueFragment : Fragment() {
             leagueViewModel.getStandingInfo(it.league_id!!)
         })
 
+
+
 //        recyclerView = view.findViewById(R.id.recycler_view)
 //        recyclerView.layoutManager = LinearLayoutManager(activity)
 
 
-//        leagueViewModel.standingInfo.observe(viewLifecycleOwner, Observer {
-
-//        })
+        leagueViewModel.standingInfo.observe(viewLifecycleOwner, Observer {
+            standingButton.visibility = View.VISIBLE
+        })
 
         standingButton.setOnClickListener {
             val fragment = StandingFragment()

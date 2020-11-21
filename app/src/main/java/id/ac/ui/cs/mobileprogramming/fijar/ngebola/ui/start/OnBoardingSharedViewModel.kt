@@ -40,7 +40,7 @@ class OnBoardingSharedViewModel(application: Application) : AndroidViewModel(app
     fun insertUserInfo(name: String, league_id: Int, image: Bitmap, playerId: Int, teamId: Int) {
         isDoneLoading.value = false
         GlobalScope.launch(Dispatchers.Main) {
-            val jobs = withContext(Dispatchers.IO) {
+            withContext(Dispatchers.IO) {
                 val imageString = convertBitmap(image)
                 user = User(name = name, leagueId = league_id, image = imageString)
                 userRepository.insertUser(user)

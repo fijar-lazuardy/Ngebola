@@ -17,16 +17,11 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
 
 
     fun getUser() {
-//        repository.getUserByName()
         viewModelScope.launch {
             userScreen.value = repository.getUserByNameBg()
         }
     }
 
-//    fun insertUser(name: String) {
-//        val user = User(name = name)
-//        repository.insertUser(user)
-//    }
 
     fun getLanguage() {
         languageName.value = Locale.getDefault().displayName.toString()

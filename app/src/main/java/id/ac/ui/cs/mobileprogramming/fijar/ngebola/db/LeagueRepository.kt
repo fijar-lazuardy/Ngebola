@@ -23,13 +23,6 @@ class LeagueRepository(application: Application) : CoroutineScope {
         leagueDao?.insertLeague(league)
     }
 
-    suspend fun getLeagueInfo(league_id: Int): League? {
-        var league: League?
-        withContext(Dispatchers.IO) {
-            league = leagueDao?.getLeagueById(league_id)
-        }
-        return league
-    }
 
     suspend fun getFirstLeagueInfo(): League? {
         var league: League?

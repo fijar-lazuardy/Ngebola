@@ -62,7 +62,7 @@
         app:layout_constraintBottom_toTopOf="@id/team_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="upload"/>
+        android:text="@string/choose_photo"/>
 
     <RadioGroup
         android:id="@+id/team_button"

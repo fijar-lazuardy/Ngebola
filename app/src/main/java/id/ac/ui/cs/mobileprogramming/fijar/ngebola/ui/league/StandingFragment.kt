@@ -42,4 +42,6 @@ class StandingFragment : Fragment() {
         })
         return view
     }
+
+
 }

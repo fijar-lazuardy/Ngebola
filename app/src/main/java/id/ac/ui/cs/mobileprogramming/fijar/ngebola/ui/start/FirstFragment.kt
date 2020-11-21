@@ -62,7 +62,7 @@ class FirstFragment : Fragment() {
             }
         }
         uploadImageBtn.setOnClickListener {
-            uploadImage()
+            chooseImageFromGallery()
         }
 
         rgLeague.setOnCheckedChangeListener { _, checkedId ->
@@ -106,7 +106,7 @@ class FirstFragment : Fragment() {
         return view
     }
 
-    private fun uploadImage() {
+    private fun chooseImageFromGallery() {
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
         val mimeTypes = arrayOf("image/jpeg", "image/png")
@@ -133,13 +133,17 @@ class FirstFragment : Fragment() {
     private fun setNotification() {
         try {
             val calendar = Calendar.getInstance()
-            calendar.set(Calendar.HOUR_OF_DAY, 9)
-            calendar.set(Calendar.MINUTE, 0)
+            calendar.set(Calendar.HOUR_OF_DAY, 8)
+            calendar.set(Calendar.MINUTE, 30)
             calendar.set(Calendar.SECOND, 0)
+            if (calendar.timeInMillis < System.currentTimeMillis()) {
+                calendar.add(Calendar.DAY_OF_YEAR, 1)
+            }
             val alarmManager = activity?.getSystemService(Context.ALARM_SERVICE) as AlarmManager
             val intent = Intent(requireContext(), MorningReceiver::class.java)
             val pendingIntent = PendingIntent.getBroadcast(requireContext(), 1, intent, PendingIntent.FLAG_UPDATE_CURRENT)
-            alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pendingIntent)
+            val delay: Long = 24 * 60 * 60 * 1000
+            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, delay, pendingIntent)
         }
         catch (e: Exception) {
             Toast.makeText(requireContext(), "Notification failed", Toast.LENGTH_SHORT).show()

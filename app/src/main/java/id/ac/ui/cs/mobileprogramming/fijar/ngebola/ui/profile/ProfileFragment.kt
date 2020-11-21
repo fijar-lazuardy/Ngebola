@@ -13,12 +13,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat.startForegroundService
 import androidx.lifecycle.Observer
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.R
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.user.User
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.notification.Actions
-import id.ac.ui.cs.mobileprogramming.fijar.ngebola.notification.NotificationService
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.notification.ServiceState
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.notification.getServiceState
 
@@ -47,20 +45,6 @@ class ProfileFragment : Fragment() {
         profileViewModel.languageName.observe(viewLifecycleOwner, Observer {
             languageUsed.text = it
         })
-        userName.setOnClickListener {
-            actionOnService(Actions.START)
-        }
-        languageUsed.setOnClickListener {
-            actionOnService(Actions.STOP)
-        }
         return view
-    }
-    private fun actionOnService(action: Actions) {
-        if (getServiceState(requireContext()) == ServiceState.STOPPED && action == Actions.STOP) return
-        Intent(activity, NotificationService::class.java).also {
-            it.action = action.name
-            activity?.startForegroundService(it)
-            return
-        }
     }
 }
