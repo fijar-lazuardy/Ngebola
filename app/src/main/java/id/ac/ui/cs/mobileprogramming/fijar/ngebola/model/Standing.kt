@@ -5,39 +5,39 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 class StandingModel {
-    @SerializedName("api")
-    var api: ApiStanding? = null
-}
-
-class ApiStanding {
     @SerializedName("standings")
-    var standings: List<List<Standing>>? = null
+    var standings: List<Standing>? = null
 }
 
 class Standing {
-    @SerializedName("rank")
-    var rank: Int? = null
-    @SerializedName("teamName")
-    var teamName: String? = null
-    @SerializedName("all")
-    var all: All? = null
-    @SerializedName("goalsDiff")
-    var goalsDiff: Int? = null
-    @SerializedName("points")
-    var points: Int? = null
+    @SerializedName("table")
+    var table: List<Table>? = null
 }
 
-class All {
-    @SerializedName("matchsPlayed")
-    var matchsPlayed: String? = null
-    @SerializedName("win")
-    var win: Int? = null
+class Table {
+    @SerializedName("position")
+    var position: Int? = null
+    @SerializedName("team")
+    var standingTeam: StandingTeam? = null
+    @SerializedName("playedGames")
+    var playedGames: Int? = null
+    @SerializedName("won")
+    var gamesWon: Int? = null
     @SerializedName("draw")
-    var draw: Int? = null
-    @SerializedName("lose")
-    var lose: Int? = null
+    var gamesDraw: Int? = null
+    @SerializedName("lost")
+    var gamesLost: Int? = null
+    @SerializedName("points")
+    var teamPoints: Int? = null
     @SerializedName("goalsFor")
     var goalsFor: Int? = null
     @SerializedName("goalsAgainst")
     var goalsAgainst: Int? = null
+    @SerializedName("goalDifference")
+    var goalDifference: Int? = null
+}
+
+class StandingTeam {
+    @SerializedName("name")
+    var standingTeamName: String? = null
 }

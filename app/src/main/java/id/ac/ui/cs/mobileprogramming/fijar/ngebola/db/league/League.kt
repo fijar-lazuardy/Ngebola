@@ -8,6 +8,5 @@ import java.io.Serializable
 data class League (
     @PrimaryKey var league_id: Int?,
     val name: String?,
-    val country: String?,
-    val season: Int?
+    val country: String?
 ): Serializable

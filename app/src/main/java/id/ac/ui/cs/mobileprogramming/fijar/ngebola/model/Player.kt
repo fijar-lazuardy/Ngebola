@@ -4,19 +4,11 @@ import com.google.gson.annotations.SerializedName
 
 
 class PlayerModel {
-    @SerializedName("api")
-    var api: ApiPlayer? = null
-}
-
-class ApiPlayer {
-    @SerializedName("players")
-    var players: List<Player>? = null
-}
-
-class Player {
-    @SerializedName("player_name")
+    @SerializedName("id")
+    var playerId: Int? = null
+    @SerializedName("name")
     var playerName: String? = null
     @SerializedName("nationality")
-    var nationality: String? = null
+    var playerNationality: String? = null
 }
 

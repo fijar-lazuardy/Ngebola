@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -16,7 +17,6 @@
         android:roundIcon="@mipmap/ic_launcher_ball"
         android:supportsRtl="true"
         android:theme="@style/Theme.Ngebola">
-        <activity android:name=".ui.start.ChoosePictureActivity"></activity>
 
         <service
             android:name=".notification.NotificationService"
@@ -28,19 +28,6 @@
             android:exported="false"
             android:permission="android.permission.BIND_JOB_SERVICE" />
 
-        <activity android:name=".notification.NotificationActivity" />
-
-
-        <receiver android:name=".receiver.HeadsetPlugReceiver">
-            <intent-filter>
-                <action android:name="android.intent.action.HEADSET_PLUG" />
-            </intent-filter>
-        </receiver>
-        <receiver android:name=".receiver.NetworkReceiver">
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-            </intent-filter>
-        </receiver>
         <receiver android:name=".receiver.MorningReceiver"
             android:enabled="true"
             android:exported="true"

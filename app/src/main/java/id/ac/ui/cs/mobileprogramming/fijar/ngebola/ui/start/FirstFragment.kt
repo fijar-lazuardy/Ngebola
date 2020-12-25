@@ -1,14 +1,17 @@
 package id.ac.ui.cs.mobileprogramming.fijar.ngebola.ui.start
 
+import android.Manifest.permission.READ_EXTERNAL_STORAGE
 import android.app.Activity.RESULT_OK
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
 import android.net.Uri
 import android.os.Bundle
+import android.os.health.PackageHealthStats
 import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
@@ -17,15 +20,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.MainActivity
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.R
+import id.ac.ui.cs.mobileprogramming.fijar.ngebola.external.AgeCategory
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.receiver.MorningReceiver
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.shared_preferences.UserSharedPreferenceManager
 import java.lang.Exception
 import java.util.*
+import java.util.jar.Manifest
 
 class FirstFragment : Fragment() {
     private lateinit var viewModel: OnBoardingSharedViewModel
@@ -47,6 +53,7 @@ class FirstFragment : Fragment() {
 
         val button: Button = view.findViewById(R.id.next_button)
         val inputName: EditText = view.findViewById(R.id.name_input_placeholder)
+        val inputAge: EditText = view.findViewById(R.id.age_input_placeholder)
         val rgTeam: RadioGroup = view.findViewById(R.id.team_button)
         val rgLeague: RadioGroup = view.findViewById(R.id.league_button)
         val rgPlayer: RadioGroup = view.findViewById(R.id.player_button)
@@ -56,9 +63,9 @@ class FirstFragment : Fragment() {
 
         rgTeam.setOnCheckedChangeListener { _, checkedId ->
             teamId = if (checkedId.toString() == "liverpool_button") {
-                40
+                64 // Liverpool
             } else {
-                541
+                86 // Real Madrid
             }
         }
         uploadImageBtn.setOnClickListener {
@@ -67,17 +74,17 @@ class FirstFragment : Fragment() {
 
         rgLeague.setOnCheckedChangeListener { _, checkedId ->
             leagueId = if (checkedId.toString() == "epl_button") {
-                2790
+                2021 // EPL
             } else {
-                2833
+                2014 //Spain Primera Division
             }
         }
 
         rgPlayer.setOnCheckedChangeListener { _, checkedId ->
             playerId = if (checkedId.toString() == "salah_button") {
-                306
+                3754 // M Salah
             } else {
-                186
+                3653 // Hazard
             }
         }
         val textWatcher = object : TextWatcher {
@@ -92,7 +99,7 @@ class FirstFragment : Fragment() {
             loadingScreen.visibility = View.VISIBLE
             sharedPrefManager = UserSharedPreferenceManager(requireContext())
             sharedPrefManager.setFirstTime(false)
-            viewModel.insertUserInfo(inputName.text.toString().trim(), leagueId, bitmap, playerId, teamId)
+            viewModel.insertUserInfo(inputName.text.toString().trim(), inputAge.text.toString().toInt() ,leagueId, bitmap, playerId, teamId)
             setNotification()
             viewModel.isDoneLoading.observe(viewLifecycleOwner, Observer {
                 if (it == true) {
@@ -107,6 +114,7 @@ class FirstFragment : Fragment() {
     }
 
     private fun chooseImageFromGallery() {
+
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
         val mimeTypes = arrayOf("image/jpeg", "image/png")

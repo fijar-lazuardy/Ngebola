@@ -3,24 +3,17 @@ package id.ac.ui.cs.mobileprogramming.fijar.ngebola.model
 import com.google.gson.annotations.SerializedName
 
 class LeagueModel {
-    @SerializedName("api")
-    var api: Api? = null
-}
-
-class Api {
-    @SerializedName("leagues")
-    var leagues: List<League>? = null
-}
-
-class League {
-    @SerializedName("league_id")
+    @SerializedName("id")
     var leagueId: Int? = null
+    @SerializedName("area")
+    var area: LeagueArea? = null
     @SerializedName("name")
-    var name: String? = null
-    @SerializedName("country")
-    var country: String? = null
-    @SerializedName("season")
-    var season: Int? = null
-    @SerializedName("logo")
-    var logo: String? = null
+    var leagueName: String? = null
+}
+
+class LeagueArea {
+    @SerializedName("id")
+    var areaId: Int? = null
+    @SerializedName("name")
+    var leagueCountry: String? = null
 }

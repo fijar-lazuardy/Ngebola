@@ -8,8 +8,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.R
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.model.Standing
+import id.ac.ui.cs.mobileprogramming.fijar.ngebola.model.Table
 
-class RecyclerAdapter(internal var context: Context, internal var standingList: List<Standing>): RecyclerView.Adapter<RecyclerAdapter.StandingHolder>() {
+class RecyclerAdapter(internal var context: Context, internal var standingList: List<Table>): RecyclerView.Adapter<RecyclerAdapter.StandingHolder>() {
     inner class StandingHolder(view: View): RecyclerView.ViewHolder(view) {
         val standingPos: TextView = view.findViewById(R.id.standing_pos_team)
         val teamName: TextView = view.findViewById(R.id.team_name_team)
@@ -32,14 +33,14 @@ class RecyclerAdapter(internal var context: Context, internal var standingList: 
     }
 
     override fun onBindViewHolder(holder: StandingHolder, position: Int) {
-        holder.standingPos.text = standingList[position].rank.toString()
-        holder.teamName.text = standingList[position].teamName
-        holder.winTeam.text = standingList[position].all?.win.toString()
-        holder.drawTeam.text = standingList[position].all?.draw.toString()
-        holder.loseTeam.text = standingList[position].all?.lose.toString()
-        holder.gfTeam.text = standingList[position].all?.goalsFor.toString()
-        holder.gaTeam.text = standingList[position].all?.goalsAgainst.toString()
-        holder.gdTeam.text = standingList[position].goalsDiff.toString()
-        holder.pointTeam.text = standingList[position].points.toString()
+        holder.standingPos.text = standingList[position].position.toString()
+        holder.teamName.text = standingList[position].standingTeam?.standingTeamName
+        holder.winTeam.text = standingList[position].gamesWon.toString()
+        holder.drawTeam.text = standingList[position].gamesDraw.toString()
+        holder.loseTeam.text = standingList[position].gamesLost.toString()
+        holder.gfTeam.text = standingList[position].goalsFor.toString()
+        holder.gaTeam.text = standingList[position].goalsAgainst.toString()
+        holder.gdTeam.text = standingList[position].goalDifference.toString()
+        holder.pointTeam.text = standingList[position].teamPoints.toString()
     }
 }

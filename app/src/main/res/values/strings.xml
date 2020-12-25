@@ -7,12 +7,15 @@
     <string name="name_label">Name</string>
     <string name="curr_lang">Language</string>
     <string name="name_input_placeholder">Input your name</string>
+    <string name="age_input_placeholder">Input your age</string>
+    <string name="category">Category</string>
+    <string name="next">Next</string>
     <string name="liverpool_team" translatable="false">Liverpool</string>
     <string name="real_madrid_team" translatable="false">Real Madrid</string>
     <string name="epl_league" translatable="false">Premier League</string>
     <string name="la_liga_league" translatable="false">La Liga</string>
     <string name="salah_player" translatable="false">M. Salah</string>
-    <string name="son_player" translatable="false">Son Heung Min</string>
+    <string name="son_player" translatable="false">Eden Hazard</string>
     <string name="choose_photo">Choose photo</string>
     <!-- Strings used for fragments for navigation -->
     <string name="league_name_descriptor">League Name</string>

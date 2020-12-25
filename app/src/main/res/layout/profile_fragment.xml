@@ -69,11 +69,10 @@
             app:cardBackgroundColor="@color/mina_color"
             app:cardCornerRadius="20dp"
             app:cardElevation="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/category_card"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="0dp"
-            android:layout_marginBottom="@dimen/_80sdp"
             app:layout_constraintTop_toBottomOf="@+id/name_card">
 
             <LinearLayout
@@ -93,6 +92,44 @@
 
                 <TextView
                     android:id="@+id/preferred_lang"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/category_card"
+            android:layout_width="350dp"
+            android:layout_height="47dp"
+            app:cardBackgroundColor="@color/mina_color"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="@dimen/_80sdp"
+            app:layout_constraintTop_toBottomOf="@+id/lang_card">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/category_placeholder"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/category"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/category_value"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

@@ -35,6 +35,12 @@ android {
     buildFeatures {
         dataBinding true
     }
+    externalNativeBuild {
+        cmake {
+            path file('CMakeLists.txt')
+        }
+    }
+    ndkVersion '22.0.6917172 rc1'
 }
 
 dependencies {

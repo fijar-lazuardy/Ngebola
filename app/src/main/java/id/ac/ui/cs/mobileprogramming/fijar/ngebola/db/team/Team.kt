@@ -9,6 +9,5 @@ import java.io.Serializable
 data class Team (
     @PrimaryKey var team_id: Int,
     val name: String?,
-    val country: String?,
-    val logo: String?
+    val country: String?
 ): Serializable

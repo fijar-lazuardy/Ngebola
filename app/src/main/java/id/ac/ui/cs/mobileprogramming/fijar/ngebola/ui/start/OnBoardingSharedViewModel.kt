@@ -15,6 +15,7 @@ import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.league.League
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.player.Player
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.team.Team
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.user.User
+import id.ac.ui.cs.mobileprogramming.fijar.ngebola.external.AgeCategory
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.retrofit.RetrofitClient
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -34,40 +35,38 @@ class OnBoardingSharedViewModel(application: Application) : AndroidViewModel(app
     private val leagueRepository = LeagueRepository(application)
     private val playerRepository = PlayerRepository(application)
     private val teamRepository = TeamRepository(application)
+    private val ageCategory = AgeCategory()
     private val retrofit = RetrofitClient.RETROFIT_SERVICE
     val isDoneLoading = MutableLiveData<Boolean>()
 
-    fun insertUserInfo(name: String, league_id: Int, image: Bitmap, playerId: Int, teamId: Int) {
+    fun insertUserInfo(name: String, age: Int, league_id: Int, image: Bitmap, playerId: Int, teamId: Int) {
         isDoneLoading.value = false
         GlobalScope.launch(Dispatchers.Main) {
             withContext(Dispatchers.IO) {
                 val imageString = convertBitmap(image)
-                user = User(name = name, leagueId = league_id, image = imageString)
+                val userCategory = ageCategory.categorizedAge(age)
+                user = User(name = name, leagueId = league_id, image = imageString, ageCategory = userCategory)
                 userRepository.insertUser(user)
 
-                val leagueResponse = retrofit.getLeagueInfoAsync(league_id).body()?.api?.leagues?.get(0)
+                val leagueResponse = retrofit.getLeagueInfoAsync(league_id).body()
                 league = League(league_id = leagueResponse?.leagueId,
-                        name = leagueResponse?.name,
-                        country = leagueResponse?.country,
-                        season = leagueResponse?.season)
+                        name = leagueResponse?.leagueName,
+                        country = leagueResponse?.area?.leagueCountry)
                 leagueRepository.insertLeague(league)
 
-                val teamResponse = retrofit.getTeamInfo(teamId).body()?.api?.teams?.get(0)
-                val linkToBitmap = BitmapFactory.decodeStream(URL(teamResponse?.logo).content as InputStream)
-                val teamLogo = convertBitmap(linkToBitmap)
+                val teamResponse = retrofit.getTeamInfo(teamId).body()
                 team = Team(
                         team_id = teamId,
                         name = teamResponse?.name,
-                        country = teamResponse?.country,
-                        logo = teamLogo
+                        country = teamResponse?.area?.teamCountry
                 )
                 teamRepository.insertTeam(team)
 
-                val playerResponse = retrofit.getPlayerInfo(playerId).body()?.api?.players?.get(0)
+                val playerResponse = retrofit.getPlayerInfo(playerId).body()
                 player = Player(
                         player_id = playerId,
                         name = playerResponse?.playerName,
-                        nationality = playerResponse?.nationality
+                        nationality = playerResponse?.playerNationality
                 )
                 playerRepository.insertPlayer(player)
             }
