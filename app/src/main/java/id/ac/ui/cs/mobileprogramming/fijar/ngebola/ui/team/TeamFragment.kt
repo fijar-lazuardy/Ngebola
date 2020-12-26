@@ -32,8 +32,8 @@ class TeamFragment : Fragment() {
         teamViewModel.teamInfo.observe(viewLifecycleOwner, Observer {
             teamName.text = it.name
             teamCountry.text = it.country
-            val teamBitmap = teamViewModel.convertToBitmap(it.logo!!)
-            teamLogo.setImageBitmap(teamBitmap)
+//            val teamBitmap = teamViewModel.convertToBitmap(it.logo!!)
+//            teamLogo.setImageBitmap(teamBitmap)
         })
 
         return view

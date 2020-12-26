@@ -9,6 +9,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
+import android.net.ConnectivityManager
 import android.net.Uri
 import android.os.Bundle
 import android.os.health.PackageHealthStats
@@ -20,8 +21,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.core.content.ContextCompat.checkSelfPermission
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.MainActivity
@@ -157,5 +156,4 @@ class FirstFragment : Fragment() {
             Toast.makeText(requireContext(), "Notification failed", Toast.LENGTH_SHORT).show()
         }
     }
-
 }

@@ -29,14 +29,12 @@ class LeagueFragment : Fragment() {
 
         val leagueName: TextView = view.findViewById(R.id.league_info_value)
         val leagueCountry: TextView = view.findViewById(R.id.league_country_value)
-        val leagueSeason: TextView = view.findViewById(R.id.league_season_value)
         val standingButton: Button = view.findViewById(R.id.standing_button)
         standingButton.isEnabled = false
 
         leagueViewModel.leagueInfo.observe(viewLifecycleOwner, Observer<League> {
             leagueName.text = it.name
             leagueCountry.text = it.country
-            leagueSeason.text = it.season.toString()
             leagueViewModel.getStandingInfo(it.league_id!!)
         })
 
