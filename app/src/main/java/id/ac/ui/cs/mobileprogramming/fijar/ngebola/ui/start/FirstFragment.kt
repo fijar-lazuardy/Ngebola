@@ -1,5 +1,7 @@
 package id.ac.ui.cs.mobileprogramming.fijar.ngebola.ui.start
 
+import android.Manifest
+import android.Manifest.permission.ACCESS_MEDIA_LOCATION
 import android.Manifest.permission.READ_EXTERNAL_STORAGE
 import android.app.Activity.RESULT_OK
 import android.app.AlarmManager
@@ -16,11 +18,14 @@ import android.os.health.PackageHealthStats
 import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.app.ActivityCompat
+import androidx.core.content.PermissionChecker.checkSelfPermission
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.MainActivity
@@ -28,9 +33,9 @@ import id.ac.ui.cs.mobileprogramming.fijar.ngebola.R
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.external.AgeCategory
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.receiver.MorningReceiver
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.shared_preferences.UserSharedPreferenceManager
+import id.ac.ui.cs.mobileprogramming.fijar.ngebola.utils.ConnectionChecker
 import java.lang.Exception
 import java.util.*
-import java.util.jar.Manifest
 
 class FirstFragment : Fragment() {
     private lateinit var viewModel: OnBoardingSharedViewModel
@@ -39,6 +44,7 @@ class FirstFragment : Fragment() {
     private lateinit var image: ImageView
     private lateinit var imageUri: Uri
     private lateinit var bitmap: Bitmap
+    private val ageCategorizer = AgeCategory()
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -46,9 +52,9 @@ class FirstFragment : Fragment() {
     ): View? {
         viewModel = ViewModelProvider(requireActivity())[OnBoardingSharedViewModel::class.java]
         val view =  inflater.inflate(R.layout.fragment_first, container, false)
-        var teamId = 40
-        var leagueId = 2790
-        var playerId = 306
+        var teamId = 64
+        var leagueId = 2021
+        var playerId = 3754
 
         val button: Button = view.findViewById(R.id.next_button)
         val inputName: EditText = view.findViewById(R.id.name_input_placeholder)
@@ -60,6 +66,12 @@ class FirstFragment : Fragment() {
         val uploadImageBtn: Button = view.findViewById(R.id.choose_picture)
         image = view.findViewById(R.id.user_image)
 
+        ConnectionChecker(requireContext(), viewLifecycleOwner) { isConnected ->
+            if (!isConnected) {
+                Toast.makeText(requireContext(), "No internet connection detected", Toast.LENGTH_SHORT).show()
+            }
+        }
+
         rgTeam.setOnCheckedChangeListener { _, checkedId ->
             teamId = if (checkedId.toString() == "liverpool_button") {
                 64 // Liverpool
@@ -68,7 +80,18 @@ class FirstFragment : Fragment() {
             }
         }
         uploadImageBtn.setOnClickListener {
-            chooseImageFromGallery()
+            try {
+                if (ActivityCompat.checkSelfPermission(requireActivity(), READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+//                    ActivityCompat.requestPermissions(requireActivity(), arrayOf(READ_EXTERNAL_STORAGE), GALLERY_REQUEST_CODE)
+                    requestPermissions(arrayOf(READ_EXTERNAL_STORAGE, ACCESS_MEDIA_LOCATION), GALLERY_REQUEST_CODE)
+                    Log.d("INFO", "Masuk sini men")
+                }
+                else {
+                    chooseImageFromGallery()
+                }
+            } catch (e: Exception) {
+                Log.d("ERROR", e.message!!)
+            }
         }
 
         rgLeague.setOnCheckedChangeListener { _, checkedId ->
@@ -98,7 +121,8 @@ class FirstFragment : Fragment() {
             loadingScreen.visibility = View.VISIBLE
             sharedPrefManager = UserSharedPreferenceManager(requireContext())
             sharedPrefManager.setFirstTime(false)
-            viewModel.insertUserInfo(inputName.text.toString().trim(), inputAge.text.toString().toInt() ,leagueId, bitmap, playerId, teamId)
+            val userCategory = getAgeCategory(inputAge.text.toString().toInt())
+            viewModel.insertUserInfo(inputName.text.toString().trim(), userCategory ,leagueId, bitmap, playerId, teamId)
             setNotification()
             viewModel.isDoneLoading.observe(viewLifecycleOwner, Observer {
                 if (it == true) {
@@ -124,7 +148,7 @@ class FirstFragment : Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 1 && resultCode == RESULT_OK) {
+        if (requestCode == GALLERY_REQUEST_CODE && resultCode == RESULT_OK) {
             try {
                 imageUri = data?.data!!
                 val source: ImageDecoder.Source = ImageDecoder.createSource(activity?.contentResolver!!, imageUri)
@@ -154,6 +178,27 @@ class FirstFragment : Fragment() {
         }
         catch (e: Exception) {
             Toast.makeText(requireContext(), "Notification failed", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun getAgeCategory(age: Int): String {
+        val category = ageCategorizer.categorizedAge(age)
+        if (category > 0)
+            return "Adult"
+        return "Children"
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when(requestCode) {
+            GALLERY_REQUEST_CODE -> if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                chooseImageFromGallery()
+            }
+            else -> Toast.makeText(requireContext(), "Can't choose photo from gallery", Toast.LENGTH_SHORT).show()
         }
     }
 }

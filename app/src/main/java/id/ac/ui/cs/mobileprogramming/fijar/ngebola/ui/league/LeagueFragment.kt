@@ -9,9 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.R
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.league.League
+import id.ac.ui.cs.mobileprogramming.fijar.ngebola.utils.ErrorResponse
 
 class LeagueFragment : Fragment() {
 
@@ -26,6 +28,10 @@ class LeagueFragment : Fragment() {
         val view = inflater.inflate(R.layout.league_fragment, container, false)
 
         leagueViewModel.getLeagueInfo()
+
+        if (ErrorResponse.ERROR_MESSAGE.isNotEmpty()) {
+            Toast.makeText(requireContext(), ErrorResponse.ERROR_MESSAGE, Toast.LENGTH_LONG).show()
+        }
 
         val leagueName: TextView = view.findViewById(R.id.league_info_value)
         val leagueCountry: TextView = view.findViewById(R.id.league_country_value)

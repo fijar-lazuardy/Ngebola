@@ -4,7 +4,10 @@ import android.app.Application
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
+import android.os.Handler
+import android.os.Looper
 import android.renderscript.ScriptGroup
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.LeagueRepository
@@ -17,6 +20,8 @@ import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.team.Team
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.db.user.User
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.external.AgeCategory
 import id.ac.ui.cs.mobileprogramming.fijar.ngebola.retrofit.RetrofitClient
+import id.ac.ui.cs.mobileprogramming.fijar.ngebola.ui.league.LeagueViewModel
+import id.ac.ui.cs.mobileprogramming.fijar.ngebola.utils.ErrorResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -35,20 +40,23 @@ class OnBoardingSharedViewModel(application: Application) : AndroidViewModel(app
     private val leagueRepository = LeagueRepository(application)
     private val playerRepository = PlayerRepository(application)
     private val teamRepository = TeamRepository(application)
-    private val ageCategory = AgeCategory()
     private val retrofit = RetrofitClient.RETROFIT_SERVICE
     val isDoneLoading = MutableLiveData<Boolean>()
 
-    fun insertUserInfo(name: String, age: Int, league_id: Int, image: Bitmap, playerId: Int, teamId: Int) {
+    fun insertUserInfo(name: String, userCategory: String, league_id: Int, image: Bitmap, playerId: Int, teamId: Int) {
         isDoneLoading.value = false
         GlobalScope.launch(Dispatchers.Main) {
             withContext(Dispatchers.IO) {
                 val imageString = convertBitmap(image)
-                val userCategory = ageCategory.categorizedAge(age)
                 user = User(name = name, leagueId = league_id, image = imageString, ageCategory = userCategory)
                 userRepository.insertUser(user)
+//                val generalResponse = retrofit.getLeagueInfoAsync(league_id)
+                val generalResponse = retrofit.getLeagueInfoAsync()
+                if (!generalResponse.isSuccessful) {
+                    ErrorResponse.ERROR_MESSAGE = generalResponse.code().toString()
+                }
+                val leagueResponse = generalResponse.body()
 
-                val leagueResponse = retrofit.getLeagueInfoAsync(league_id).body()
                 league = League(league_id = leagueResponse?.leagueId,
                         name = leagueResponse?.leagueName,
                         country = leagueResponse?.area?.leagueCountry)
@@ -69,6 +77,7 @@ class OnBoardingSharedViewModel(application: Application) : AndroidViewModel(app
                         nationality = playerResponse?.playerNationality
                 )
                 playerRepository.insertPlayer(player)
+
             }
             isDoneLoading.value = true
         }

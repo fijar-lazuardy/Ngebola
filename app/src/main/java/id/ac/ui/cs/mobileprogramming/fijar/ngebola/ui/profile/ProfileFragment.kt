@@ -24,6 +24,7 @@ class ProfileFragment : Fragment() {
         val userName: TextView = view.findViewById(R.id.user_name)
         val userImage: ImageView = view.findViewById(R.id.user_image_detail)
         val languageUsed: TextView = view.findViewById(R.id.preferred_lang)
+        val userCategory: TextView = view.findViewById(R.id.category_value)
 
         profileViewModel = ViewModelProvider(this)[ProfileViewModel::class.java]
         profileViewModel.getUser()
@@ -33,6 +34,7 @@ class ProfileFragment : Fragment() {
             userName.text = it?.name
             val bitmap: Bitmap = profileViewModel.convertToBitmap(it?.image!!)
             userImage.setImageBitmap(bitmap)
+            userCategory.text = it.ageCategory
         })
 
         profileViewModel.languageName.observe(viewLifecycleOwner, Observer {
