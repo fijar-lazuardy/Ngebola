@@ -50,8 +50,8 @@ class OnBoardingSharedViewModel(application: Application) : AndroidViewModel(app
                 val imageString = convertBitmap(image)
                 user = User(name = name, leagueId = league_id, image = imageString, ageCategory = userCategory)
                 userRepository.insertUser(user)
-//                val generalResponse = retrofit.getLeagueInfoAsync(league_id)
-                val generalResponse = retrofit.getLeagueInfoAsync()
+                val generalResponse = retrofit.getLeagueInfoAsync(league_id)
+//                val generalResponse = retrofit.getLeagueInfoAsync()
                 if (!generalResponse.isSuccessful) {
                     ErrorResponse.ERROR_MESSAGE = generalResponse.code().toString()
                 }

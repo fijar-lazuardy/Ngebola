@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -19,21 +19,30 @@
         android:roundIcon="@mipmap/ic_launcher_ball"
         android:supportsRtl="true"
         android:theme="@style/Theme.Ngebola">
+        <activity android:name=".ui.SplashScreenActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <service
             android:name=".notification.NotificationService"
             android:enabled="true"
             android:exported="false"
             android:process=":notificationService" />
-        <service android:name=".notification.NotifJobService"
+        <service
+            android:name=".notification.NotifJobService"
             android:enabled="true"
             android:exported="false"
             android:permission="android.permission.BIND_JOB_SERVICE" />
 
-        <receiver android:name=".receiver.MorningReceiver"
+        <receiver
+            android:name=".receiver.MorningReceiver"
+            android:directBootAware="true"
             android:enabled="true"
-            android:exported="true"
-            android:directBootAware="true">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
@@ -44,11 +53,7 @@
             android:name=".ui.start.OnboardingActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.Ngebola.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"

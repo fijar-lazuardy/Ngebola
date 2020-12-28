@@ -11,11 +11,11 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface ApiService {
-//    @GET("/competitions/{league_id}")
-//    suspend fun getLeagueInfoAsync(@Path("league_id") league_id:Int): Response<LeagueModel>
+    @GET("/competitions/{league_id}")
+    suspend fun getLeagueInfoAsync(@Path("league_id") league_id:Int): Response<LeagueModel>
 
-    @GET("/competitions/2014")
-    suspend fun getLeagueInfoAsync(): Response<LeagueModel>
+//    @GET("/competitions/2014")
+//    suspend fun getLeagueInfoAsync(): Response<LeagueModel>
 
     @GET("/competitions/{league_id}/standings")
     suspend fun getStandingInfo(@Path("league_id") league_id: Int): Response<StandingModel>
