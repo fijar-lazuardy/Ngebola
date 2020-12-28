@@ -5,10 +5,11 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
-    private const val BASE_URL = "https://api.football-data.org/v2/"
+    const val BASE_URL = "https://api.football-data.org/v2/"
 
     private val httpClient = OkHttpClient.Builder().addInterceptor {
         val request = it.request().newBuilder().addHeader("X-Auth-Token", "9fefd9d44ceb4e0484bf4932e80b04e7").build()
+//        val request = it.request().newBuilder().addHeader("X-Auth-Token", "9fefd9d44ceb4e0484bf4932e80b04e7sadaw").build()
         return@addInterceptor it.proceed(request)
     }.build()
 

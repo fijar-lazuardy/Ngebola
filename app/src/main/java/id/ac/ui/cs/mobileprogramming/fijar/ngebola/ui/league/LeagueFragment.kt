@@ -29,8 +29,9 @@ class LeagueFragment : Fragment() {
 
         leagueViewModel.getLeagueInfo()
 
-        if (ErrorResponse.ERROR_MESSAGE.isNotEmpty()) {
-            Toast.makeText(requireContext(), ErrorResponse.ERROR_MESSAGE, Toast.LENGTH_LONG).show()
+        if (ErrorResponse.ERROR_CODE_ALT != 0) {
+//            Toast.makeText(requireContext(), ErrorResponse.ERROR_MESSAGE, Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), ErrorResponse.ERROR_CODE_ALT.toString(), Toast.LENGTH_LONG).show()
         }
 
         val leagueName: TextView = view.findViewById(R.id.league_info_value)

@@ -9,6 +9,12 @@ class LeagueModel {
     var area: LeagueArea? = null
     @SerializedName("name")
     var leagueName: String? = null
+    @SerializedName("message")
+    var errorMessage: String? = null
+    @SerializedName("errorCode")
+    var errorCode: Int? = null
+    @SerializedName("error")
+    var errorCodeAlt: Int? = null
 }
 
 class LeagueArea {

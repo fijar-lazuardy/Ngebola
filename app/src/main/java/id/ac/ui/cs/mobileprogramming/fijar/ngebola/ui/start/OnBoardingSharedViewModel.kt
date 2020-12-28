@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.Handler
 import android.os.Looper
 import android.renderscript.ScriptGroup
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
@@ -28,6 +29,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.ByteArrayOutputStream
 import java.io.InputStream
+import java.lang.Exception
 import java.net.URL
 import java.util.*
 
@@ -53,7 +55,15 @@ class OnBoardingSharedViewModel(application: Application) : AndroidViewModel(app
                 val generalResponse = retrofit.getLeagueInfoAsync(league_id)
 //                val generalResponse = retrofit.getLeagueInfoAsync()
                 if (!generalResponse.isSuccessful) {
-                    ErrorResponse.ERROR_MESSAGE = generalResponse.code().toString()
+                    ErrorResponse.ERROR_MESSAGE = generalResponse.errorBody().toString()
+                    ErrorResponse.ERROR_CODE_ALT = generalResponse.code()
+                    try {
+                        ErrorResponse.ERROR_CODE = generalResponse.body()?.errorCodeAlt!!
+                    } catch (e: Exception) {
+                        val url = RetrofitClient.BASE_URL + "competitions/2014"
+                        Log.d("AWI", url)
+                        Log.d("CHECKING", RetrofitClient.RETROFIT_SERVICE.toString())
+                    }
                 }
                 val leagueResponse = generalResponse.body()
 
