@@ -5,6 +5,7 @@ import android.Manifest.permission.ACCESS_MEDIA_LOCATION
 import android.Manifest.permission.READ_EXTERNAL_STORAGE
 import android.app.Activity.RESULT_OK
 import android.app.AlarmManager
+import android.app.AlertDialog
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
@@ -66,12 +67,15 @@ class FirstFragment : Fragment() {
         val uploadImageBtn: Button = view.findViewById(R.id.choose_picture)
         image = view.findViewById(R.id.user_image)
 
-        ConnectionChecker(requireContext(), viewLifecycleOwner) { isConnected ->
-            if (!isConnected) {
-                Toast.makeText(requireContext(), "No internet connection detected", Toast.LENGTH_SHORT).show()
-            }
-        }
+        Thread.sleep(1000)
+        if (!isConnectedToInternet()) {
+            AlertDialog.Builder(requireContext())
+                    .setMessage("Must be connected to internet")
+                    .setPositiveButton("OK") { _, _ ->
 
+                    }
+                    .show()
+        }
         rgTeam.setOnCheckedChangeListener { _, checkedId ->
             teamId = if (checkedId.toString() == "liverpool_button") {
                 64 // Liverpool
@@ -82,7 +86,6 @@ class FirstFragment : Fragment() {
         uploadImageBtn.setOnClickListener {
             try {
                 if (ActivityCompat.checkSelfPermission(requireActivity(), READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-//                    ActivityCompat.requestPermissions(requireActivity(), arrayOf(READ_EXTERNAL_STORAGE), GALLERY_REQUEST_CODE)
                     requestPermissions(arrayOf(READ_EXTERNAL_STORAGE, ACCESS_MEDIA_LOCATION), GALLERY_REQUEST_CODE)
                     Log.d("INFO", "Masuk sini men")
                 }
@@ -200,5 +203,13 @@ class FirstFragment : Fragment() {
             }
             else -> Toast.makeText(requireContext(), "Can't choose photo from gallery", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun isConnectedToInternet(): Boolean {
+        var connected = false
+        ConnectionChecker(requireContext(), viewLifecycleOwner) { isConnected ->
+            connected = isConnected
+        }
+        return connected
     }
 }

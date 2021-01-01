@@ -87,9 +87,9 @@ class ConnectionChecker(
                                     val transportVpn =
                                             networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_VPN)
 
-                                    val isConnected = netInternet ||
-                                            transportWifi || transportCellular ||
-                                            transportEthernet || transportVpn
+                                    val isConnected = netInternet
+//                                            || transportWifi || transportCellular ||
+//                                            transportEthernet || transportVpn
 
                                     Log.d("INFO", "Connections State $isConnected netInternet: $netInternet, WiFi: $transportWifi, Cellular: $transportCellular, Ethernet: $transportEthernet, VPN: $transportVpn")
                                     toggleConnectionState(isConnected)
