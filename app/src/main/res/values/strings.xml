@@ -6,6 +6,10 @@
     <string name="title_profile">Profile</string>
     <string name="name_label">Name</string>
     <string name="curr_lang">Language</string>
+    <string name="stopwatch" translatable="false">Stopwatch</string>
+    <string name="start" translatable="false">Start</string>
+    <string name="pause" translatable="false">Pause</string>
+    <string name="reset" translatable="false">Reset</string>
     <string name="name_input_placeholder">Input your name</string>
     <string name="age_input_placeholder">Input your age</string>
     <string name="category">Category</string>
@@ -37,4 +41,6 @@
     <string name="notification_title">Top Of The Morning!</string>
     <string name="notification_text">Check standing\'s update here!</string>
     <string name="season_holder">Season</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

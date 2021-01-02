@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_weight="1"
     android:layout_height="wrap_content"
-
-    app:cardBackgroundColor="@color/mina_color">
+    app:cardBackgroundColor="@color/mina_color"
+    app:cardCornerRadius="0dp">
 
     <RelativeLayout
 

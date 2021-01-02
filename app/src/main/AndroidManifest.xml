@@ -28,11 +28,6 @@
         </activity>
 
         <service
-            android:name=".notification.NotificationService"
-            android:enabled="true"
-            android:exported="false"
-            android:process=":notificationService" />
-        <service
             android:name=".notification.NotifJobService"
             android:enabled="true"
             android:exported="false"

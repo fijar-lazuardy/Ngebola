@@ -67,15 +67,6 @@ class FirstFragment : Fragment() {
         val uploadImageBtn: Button = view.findViewById(R.id.choose_picture)
         image = view.findViewById(R.id.user_image)
 
-        Thread.sleep(1000)
-        if (!isConnectedToInternet()) {
-            AlertDialog.Builder(requireContext())
-                    .setMessage("Must be connected to internet")
-                    .setPositiveButton("OK") { _, _ ->
-
-                    }
-                    .show()
-        }
         rgTeam.setOnCheckedChangeListener { _, checkedId ->
             teamId = if (checkedId.toString() == "liverpool_button") {
                 64 // Liverpool
@@ -90,6 +81,7 @@ class FirstFragment : Fragment() {
                     Log.d("INFO", "Masuk sini men")
                 }
                 else {
+
                     chooseImageFromGallery()
                 }
             } catch (e: Exception) {
@@ -124,6 +116,7 @@ class FirstFragment : Fragment() {
             loadingScreen.visibility = View.VISIBLE
             sharedPrefManager = UserSharedPreferenceManager(requireContext())
             sharedPrefManager.setFirstTime(false)
+//            val userCategory = ageCategorizer.categorizedAge(inputAge.text.toString().toInt()).toString()
             val userCategory = getAgeCategory(inputAge.text.toString().toInt())
             viewModel.insertUserInfo(inputName.text.toString().trim(), userCategory ,leagueId, bitmap, playerId, teamId)
             setNotification()
@@ -140,7 +133,6 @@ class FirstFragment : Fragment() {
     }
 
     private fun chooseImageFromGallery() {
-
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
         val mimeTypes = arrayOf("image/jpeg", "image/png")
@@ -199,17 +191,19 @@ class FirstFragment : Fragment() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when(requestCode) {
             GALLERY_REQUEST_CODE -> if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Log.d("INFO", "Allow masuk sini")
+
                 chooseImageFromGallery()
+            } else {
+                AlertDialog.Builder(requireContext())
+                    .setMessage("This app required gallery permission to upload profile picture.")
+                    .setPositiveButton("OK") { _, _ ->
+
+                    }
+                    .show()
             }
-            else -> Toast.makeText(requireContext(), "Can't choose photo from gallery", Toast.LENGTH_SHORT).show()
+            else -> Log.d("CHECKER", "Denied masuk sini")
         }
     }
 
-    private fun isConnectedToInternet(): Boolean {
-        var connected = false
-        ConnectionChecker(requireContext(), viewLifecycleOwner) { isConnected ->
-            connected = isConnected
-        }
-        return connected
-    }
 }

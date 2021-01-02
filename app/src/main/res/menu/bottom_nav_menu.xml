@@ -7,6 +7,11 @@
         android:title="@string/title_home" />
 
     <item
+        android:id="@+id/navigation_stopwatch"
+        android:icon="@drawable/ic_stopwatch"
+        android:title="@string/stopwatch" />
+
+    <item
         android:id="@+id/navigation_league"
         android:icon="@drawable/ic_trophy"
         android:title="@string/title_league" />

@@ -12,6 +12,12 @@
         tools:layout="@layout/home_fragment" />
 
     <fragment
+        android:id="@+id/navigation_stopwatch"
+        android:name="id.ac.ui.cs.mobileprogramming.fijar.ngebola.ui.stopwatch.StopwatchFragment"
+        android:label="@string/stopwatch"
+        tools:layout="@layout/fragment_stopwatch" />
+
+    <fragment
         android:id="@+id/navigation_league"
         android:name="id.ac.ui.cs.mobileprogramming.fijar.ngebola.ui.league.LeagueFragment"
         android:label="@string/title_league"

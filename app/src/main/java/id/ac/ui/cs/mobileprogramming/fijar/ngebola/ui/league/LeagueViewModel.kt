@@ -17,7 +17,6 @@ class LeagueViewModel(application: Application) : AndroidViewModel(application) 
     private val retrofit = RetrofitClient.RETROFIT_SERVICE
     val leagueInfo = MutableLiveData<League>()
     val standingInfo = MutableLiveData<List<Table>>()
-    val errorMessage = MutableLiveData<String>()
     private val leagueRepository = LeagueRepository(application)
 
     fun getLeagueInfo() {

@@ -19,6 +19,38 @@ class ConnectionChecker(
         private val callback: (Boolean) -> Unit
 ) : LifecycleObserver {
 
+    fun isConnected(context: Context): Boolean {
+        val connectivityManager: ConnectivityManager = context.getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
+
+        var netInternet = false
+        var transportCellular = false
+        var transportWifi = false
+        var transportEthernet = false
+        var transportVpn = false
+
+        connectivityManager.allNetworks.forEach { network ->
+            network?.let {
+                connectivityManager.getNetworkCapabilities(it)
+                        ?.let { networkCapabilities ->
+                            netInternet =
+                                    networkCapabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+                            transportCellular =
+                                    networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)
+                            transportWifi =
+                                    networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)
+                            transportEthernet =
+                                    networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)
+                            transportVpn =
+                                    networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_VPN)
+                        }
+            }
+        }
+
+        return netInternet ||
+                transportWifi || transportCellular ||
+                transportEthernet || transportVpn
+    }
+
     private var connectivityManager =
             context.getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
 
